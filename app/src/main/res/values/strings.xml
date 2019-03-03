@@ -1,0 +1,97 @@
+<resources>
+
+<!--
+    <string name="app_name">Sherkat Questionear</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="login">LOGIN</string>
+    <string name="part">PART : </string>
+    <string name="question">QUESTION : </string>
+    <string name="back">BACK</string>
+    <string name="forward">FORWARD</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="email">Username</string>
+    <string name="passowrd">Password</string>
+    <string name="show_pwd">Show Password</string>
+    <string name="hide_pwd">Hide Password</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="closebutton">Close Button for Activity</string>
+    <string name="newUser">Not a Member yet? Sign Up here.</string>
+    <string name="fullName">Full Name</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="location">Location</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="terms_conditions">By clicking SignUp you agree all the Terms and Conditions.</string>
+    <string name="signUp">SIGN UP</string>
+    <string name="already_user">Already have Account? Login here.</string>
+    <string name="registered_emailid">Please enter your Registered Email Id below:</string>
+    <string name="submit">SUBMIT</string>
+    <string name="login1">LOGIN1</string>
+
+    <string name="phone">PHONE NUMBER</string>
+    <string name="register">REGISTER</string>
+    <string name="questionnaire">QUESTIONNAIRE</string>
+    <string name="newBtn">NEW</string>
+    <string name="result">RESULT</string>
+    <string name="done">DONE</string>
+    <string name="answers">ANSWERS</string>
+    <string name="questionnaireId">POR.</string>
+    <string name="questionId">QU.</string>
+    <string name="answerId">ANS.</string>
+    <string name="pasokhgoo">PASOKHGOO</string>
+
+
+    <string name="questionnaireText1">test 1</string>
+    <string name="questionnaireTitle1">about weather</string>
+    <string name="questionnaireText2">test 2</string>
+    <string name="questionnaireTitle2">about geography</string>
+    <string name="questionnaireText3">test 3</string>
+    <string name="questionnaireTitle3">about health</string>
+
+
+-->
+
+
+
+    <string name="app_name">Sherkat Questionear</string>
+    <string name="username">نام کاربری</string>
+    <string name="password">گذرواژه</string>
+    <string name="login">ورود</string>
+    <string name="part">پارت : </string>
+    <string name="question">QUESTION : </string>
+    <string name="back">قبلی</string>
+    <string name="forward">بعدی</string>
+
+    <string name="closebutton">دکمه بستن صفحه</string>
+    <string name="show_pwd">نشان دادن گذرواژه</string>
+    <string name="hide_pwd">مخفی کردن گذرواژه</string>
+
+
+    <string name="phone">شماره تلفن</string>
+    <string name="register">ثبت</string>
+    <string name="questionnaire">پرسشنامه</string>
+    <string name="newBtn">جدید</string>
+    <string name="result">نتیجه</string>
+    <string name="allresults">همه نتایج</string>
+    <string name="done">نتایج</string>
+    <string name="answers">جواب ها</string>
+    <string name="questionnaireId">پرسشنامه</string>
+    <string name="questionId">سوال</string>
+    <string name="answerId">جواب</string>
+    <string name="pasokhgoo">پاسخگو</string>
+
+
+
+    <string name="questionnaireText1">پرسشنامه 1</string>
+    <string name="questionnaireTitle1">درباره آب و هوا</string>
+    <string name="questionnaireText2">پرسشنامه 2</string>
+    <string name="questionnaireTitle2">درباره جغرافی</string>
+    <string name="questionnaireText3">پرسشنامه 3</string>
+    <string name="questionnaireTitle3">درباره سلامت</string>
+
+
+
+
+</resources>

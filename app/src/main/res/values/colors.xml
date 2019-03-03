@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="violet">#D8BFD8</color>
+    <color name="pink2">#FFC0CB</color>
+    <color name="DarkGoldenRod">#B8860B</color>
+    <color name="DarkKhaki">#BDB76B</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="DarkRed">#8B0000</color>
+    <color name="GoldenRod">#DAA520</color>
+    <color name="Orange">#FFA500</color>
+    <color name="Peru">#CD853F</color>
+    <color name="ListSelected">#556B2F</color>
+    <color name="SaddleBrown">#8B4513</color>
+    <color name="coral">#FF7F50</color>
+
+    <color name="background_color">#009688</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white_greyish">#EEEEEE</color>
+    <color name="button_selectorcolor">#9E9E9E</color>
+
+
+
+</resources>
