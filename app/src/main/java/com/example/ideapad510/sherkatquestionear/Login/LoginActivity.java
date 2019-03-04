@@ -17,7 +17,7 @@ import com.google.gson.JsonSerializer;
 
 import org.json.JSONObject;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 	private static FragmentManager fragmentManager;
 	Params params = Params.getInstance();

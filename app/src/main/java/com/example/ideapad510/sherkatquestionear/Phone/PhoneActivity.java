@@ -1,8 +1,8 @@
 package com.example.ideapad510.sherkatquestionear.Phone;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,7 +14,7 @@ import com.example.ideapad510.sherkatquestionear.Questions.Question;
 import com.example.ideapad510.sherkatquestionear.R;
 
 
-public class Phone extends Activity {
+public class PhoneActivity extends AppCompatActivity {
     PhoneController phoneController = new PhoneController(this);
     Params params = Params.getInstance();
 
@@ -43,7 +43,7 @@ public class Phone extends Activity {
             phoneController.insertPhoneNumber(number);
         params.setPasokhgoo(number);
 
-        Intent intent = new Intent(Phone.this, Question.class);
+        Intent intent = new Intent(PhoneActivity.this, Question.class);
         startActivity(intent);
     }
 

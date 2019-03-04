@@ -1,26 +1,22 @@
 package com.example.ideapad510.sherkatquestionear.Questionnaire;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionnaireTable;
-import com.example.ideapad510.sherkatquestionear.New.New;
+import com.example.ideapad510.sherkatquestionear.New.NewActivity;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.R;
 import com.example.ideapad510.sherkatquestionear.ql.qlController;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.media.CamcorderProfile.get;
-import static com.example.ideapad510.sherkatquestionear.Database.Tables.qlTable.jmrcode;
 
-public class Questionnaire extends Activity {
+public class Questionnaire extends AppCompatActivity {
 
     private ListView listView;
     private static ArrayList<String> questionnaires  = new ArrayList<>();
@@ -60,7 +56,7 @@ public class Questionnaire extends Activity {
                 //because start of database and list are different
                 position++;
 
-                Intent intent = new Intent(Questionnaire.this, New.class);
+                Intent intent = new Intent(Questionnaire.this, NewActivity.class);
 
                 //get username from last activity (login) and set it to next activity
 //                String username = getIntent().getStringExtra("user");

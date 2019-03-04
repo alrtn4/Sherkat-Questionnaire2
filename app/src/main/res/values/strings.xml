@@ -1,6 +1,6 @@
 <resources>
 
-<!--
+    <!--
     <string name="app_name">Sherkat Questionear</string>
     <string name="username">USERNAME</string>
     <string name="password">PASSWORD</string>
@@ -54,7 +54,6 @@
 -->
 
 
-
     <string name="app_name">Sherkat Questionear</string>
     <string name="username">نام کاربری</string>
     <string name="password">گذرواژه</string>
@@ -83,15 +82,12 @@
     <string name="pasokhgoo">پاسخگو</string>
 
 
-
     <string name="questionnaireText1">پرسشنامه 1</string>
     <string name="questionnaireTitle1">درباره آب و هوا</string>
     <string name="questionnaireText2">پرسشنامه 2</string>
     <string name="questionnaireTitle2">درباره جغرافی</string>
     <string name="questionnaireText3">پرسشنامه 3</string>
     <string name="questionnaireTitle3">درباره سلامت</string>
-
-
 
 
 </resources>
