@@ -41,6 +41,8 @@ public class Question extends Activity {
         Database db = Database.getInstance(this);
 
         buttons2.checkedListener();
+
+
     }
 
     @Override
