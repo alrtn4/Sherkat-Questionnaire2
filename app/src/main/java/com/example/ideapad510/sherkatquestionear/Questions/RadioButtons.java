@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ideapad510.sherkatquestionear.Database.Database;
@@ -34,6 +35,7 @@ public class RadioButtons {
     AnswerController answerController;
     Lists lists;
     Params params = Params.getInstance();
+    int radioButtonsNumber;
     String TAG = "RadioButtons";
 
     public RadioButtons(Activity activity, Context context, String username, String porseshnameId,
@@ -54,6 +56,10 @@ public class RadioButtons {
 
     public void addRadioButtons(int number, ArrayList<String> answers, int pageNumber) {
         RadioGroup radioGroup = activity.findViewById(R.id.radioGroup);
+
+        radioGroup.setVisibility(View.VISIBLE);
+
+        radioButtonsNumber = number;
 
         //adds radioButtons equal to the given number
         for (int i = 1; i <= number; i++) {
@@ -88,6 +94,8 @@ public class RadioButtons {
         {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            cleaner();
 
             //using pagenumber as questionId
             String questionId = String.valueOf(pageNumber+1);
@@ -134,6 +142,27 @@ public class RadioButtons {
         addRadioButtons(answers.size(), answers, positionInQuestionList);
 
     }
+
+
+
+    private void cleaner(){
+        for(int i = 1; i <= radioButtonsNumber; i++){
+            RadioButton radioButton = activity.findViewById(i);
+
+            //using pagenumber as questionId
+            String questionId = String.valueOf(pageNumber+1);
+            String answerId = String.valueOf( i);
+            String pasokhgoo = params.getPasokhgoo();
+
+            DatabaseOtherMethods databaseOtherMethods = new DatabaseOtherMethods(context);
+
+            if(questionController.searchInResult(porseshnameId, username, questionId, answerId, pasokhgoo)) {
+                radioButton.setBackgroundResource(R.drawable.rectangle7);
+                databaseOtherMethods.deletSavedResult(porseshnameId, username, questionId, answerId, pasokhgoo);
+            }
+        }
+    }
+
 
 
 }

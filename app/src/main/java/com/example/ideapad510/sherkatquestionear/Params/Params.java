@@ -18,6 +18,7 @@ public class Params {
     private String pasokhgoo;
     private Context context;
     private ArrayList questionnairesIds;
+    private int pageNumber;
 
     private Params(){};
 
@@ -52,6 +53,8 @@ public class Params {
     public void setQuestionnairesIds(ArrayList<String> questionnairesIds){
         this.questionnairesIds = questionnairesIds;}
 
+    public void setPageNumber(int pageNumber){ this.pageNumber = pageNumber;}
+
     public String getUsername(){
         return username;
     }
@@ -73,4 +76,6 @@ public class Params {
     public Context getContext(){ return context;}
 
     public ArrayList<String> getQuestionnairesIds(){ return questionnairesIds;}
+
+    public int getPageNumber(){ return pageNumber;}
 }

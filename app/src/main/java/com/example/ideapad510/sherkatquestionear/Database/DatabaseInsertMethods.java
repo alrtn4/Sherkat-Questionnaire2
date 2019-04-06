@@ -125,4 +125,22 @@ public class DatabaseInsertMethods {
         db.close();
     }
 
+
+    public void insertTextAnswer(String questionID, String answerId, String porseshnameId,
+                                 String user, String pasokhgoo) {
+        SQLiteDatabase db = database.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(ResultTable.COLUMN_QUESTION_ID, questionID);
+        values.put(ResultTable.COLUMN_ANSWER_ID, answerId);
+        values.put(ResultTable.COLUMN_PORSESHNAME_ID, porseshnameId);
+        values.put(ResultTable.COLUMN_USER, user);
+        values.put(ResultTable.PASOKHGOO, pasokhgoo);
+
+        db.insert(ResultTable.TABLE_NAME, null, values);
+
+        db.close();
+    }
+
 }

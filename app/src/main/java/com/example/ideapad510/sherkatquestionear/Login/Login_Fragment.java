@@ -77,6 +77,9 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
 				R.anim.shake);
 
+		username.setText("1");
+		password.setText("1");
+
 	}
 
 	// Set Listeners
@@ -160,7 +163,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 				|| getPassword.equals("") || getPassword.length() == 0) {
 			loginLayout.startAnimation(shakeAnimation);
 			new CustomToast().Show_Toast(getActivity(), view,
-					"Enter both credentials.");
+					"هر دو مورد را وارد کنید!");
 
 		}
 		// Else do login and do your stuff

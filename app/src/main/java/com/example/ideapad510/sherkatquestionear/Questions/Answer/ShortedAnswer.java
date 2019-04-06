@@ -5,15 +5,18 @@ package com.example.ideapad510.sherkatquestionear.Questions.Answer;
 import java.util.ArrayList;
 
 public class ShortedAnswer {
-    public String question;
-    public String answerStartString;
-    public String answerEndString;
+    private String question;
+    private String answerStartString;
+    private String answerEndString;
+    private String answerType;
     private String questionId;
 
-    ShortedAnswer(String question, String answerStartString, String answerEndString, String questionId){
+    ShortedAnswer(String question, String answerStartString, String answerEndString,
+                  String answerType, String questionId){
         this.question = question;
         this.answerStartString = answerStartString;
         this.answerEndString = answerEndString;
+        this.answerType = answerType;
         this.questionId = questionId;
     }
 
@@ -35,4 +38,6 @@ public class ShortedAnswer {
     public String getQuestionId(){
         return questionId;
     }
+
+    public String getAnswerType(){ return answerType;}
 }
