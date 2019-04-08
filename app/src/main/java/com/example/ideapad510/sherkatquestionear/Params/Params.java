@@ -19,6 +19,7 @@ public class Params {
     private Context context;
     private ArrayList questionnairesIds;
     private int pageNumber;
+    private int listPosition;
 
     private Params(){};
 
@@ -78,4 +79,9 @@ public class Params {
     public ArrayList<String> getQuestionnairesIds(){ return questionnairesIds;}
 
     public int getPageNumber(){ return pageNumber;}
+
+    public int getListPosition() { return listPosition; }
+
+    public void setListPosition(int listPosition) { this.listPosition = listPosition; }
+
 }

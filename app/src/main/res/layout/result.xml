@@ -93,14 +93,34 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/resultList"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/columns"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginBottom="8dp">
+
+        <ListView
+            android:id="@+id/resultList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/columns"
+            android:layout_marginTop="20dp"
+            />
+
+    </ScrollView>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:color="@color/white_greyish"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
 
 </RelativeLayout>
