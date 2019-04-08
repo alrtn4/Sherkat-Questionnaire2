@@ -13,7 +13,7 @@ import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.R;
-import com.example.ideapad510.sherkatquestionear.Result.Result;
+import com.example.ideapad510.sherkatquestionear.Result.ResultActivity;
 import com.example.ideapad510.sherkatquestionear.Result.ResultController;
 
 import java.util.ArrayList;
@@ -148,7 +148,7 @@ public class Question extends AppCompatActivity {
     }
 
     public  void onDoneClicked(View view){
-        Intent intent = new Intent(Question.this, Result.class);
+        Intent intent = new Intent(Question.this, ResultActivity.class);
         intent.putExtra("user",username);
         startActivity(intent);
     }

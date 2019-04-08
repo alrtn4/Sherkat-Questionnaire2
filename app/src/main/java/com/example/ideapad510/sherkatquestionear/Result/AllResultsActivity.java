@@ -11,7 +11,7 @@ import com.example.ideapad510.sherkatquestionear.Result.ResultController;
 import com.example.ideapad510.sherkatquestionear.Result.ResultListAdapter;
 
 
-public class AllResults extends AppCompatActivity {
+public class AllResultsActivity extends AppCompatActivity {
     ListView listView;
     ResultController resultController = new ResultController(this);
     String TAG = "AllResult";

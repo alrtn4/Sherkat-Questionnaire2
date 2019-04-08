@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 		try {
-//			System.out.println("hiiiiiiiiiiii");
 //			JSONObject jsonObject = new JSONObject(new JSONText().getText());
 
 //			HttpHandler httpHandler = new HttpHandler();

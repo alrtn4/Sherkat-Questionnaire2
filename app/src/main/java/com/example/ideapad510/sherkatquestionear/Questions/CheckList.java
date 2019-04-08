@@ -8,6 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ideapad510.sherkatquestionear.Database.Database;
@@ -173,6 +174,14 @@ public class CheckList {
 
         ArrayList <String> answers = lists.findingAnswers(positionInQuestionList);
         addCheckBoxes(answers.size(), answers, positionInQuestionList);
+
+        ScrollView scrollView = activity.findViewById(R.id.editScroll);
+        scrollView.setVisibility(View.GONE);
+        ScrollView scrollView1 = activity.findViewById(R.id.scrollView);
+        scrollView1.setVisibility(View.GONE);
+        ScrollView scrollView2 = activity.findViewById(R.id.scrollView2);
+        scrollView2.setVisibility(View.VISIBLE);
+
 
     }
 

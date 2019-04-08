@@ -141,6 +141,13 @@ public class RadioButtons {
         ArrayList <String> answers = lists.findingAnswers(positionInQuestionList);
         addRadioButtons(answers.size(), answers, positionInQuestionList);
 
+        ScrollView scrollView = activity.findViewById(R.id.editScroll);
+        scrollView.setVisibility(View.GONE);
+        ScrollView scrollView1 = activity.findViewById(R.id.scrollView);
+        scrollView1.setVisibility(View.VISIBLE);
+        ScrollView scrollView2 = activity.findViewById(R.id.scrollView2);
+        scrollView2.setVisibility(View.GONE);
+
     }
 
 

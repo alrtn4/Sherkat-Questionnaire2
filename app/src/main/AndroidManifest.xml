@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Questionnaire.Questionnaire"></activity>
-        <activity android:name=".Result.Result"></activity>
+        <activity android:name=".Result.ResultActivity"></activity>
         <activity android:name=".Questions.Question"></activity>
         <activity android:name=".New.NewActivity"></activity>
         <activity android:name=".Phone.PhoneActivity"></activity>
-        <activity android:name=".Result.AllResults"></activity>
+        <activity android:name=".Result.AllResultsActivity"></activity>
     </application>
 
 </manifest>
