@@ -24,14 +24,10 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Questionnaire.Questionnaire;
+import com.example.ideapad510.sherkatquestionear.Questionnaire.QuestionnaireActivity;
 import com.example.ideapad510.sherkatquestionear.R;
-
-import static android.content.ContentValues.TAG;
 
 public class Login_Fragment extends Fragment implements OnClickListener {
 	private static View view;
@@ -172,7 +168,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 //					.show();
 
         if (loginController.searchInDatabase(getUsername,getPassword)) {
-            Intent i = new Intent(getActivity(), Questionnaire.class);
+            Intent i = new Intent(getActivity(), QuestionnaireActivity.class);
             params.setUsername(getUsername);
             startActivity(i);
         }

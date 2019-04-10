@@ -2,7 +2,7 @@ package com.example.ideapad510.sherkatquestionear.Phone;
 
 import android.content.Context;
 
-import com.example.ideapad510.sherkatquestionear.ParentClass.Controller;
+import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 /**
  * Created by Ideapad 510 on 2/12/2019.

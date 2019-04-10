@@ -18,7 +18,7 @@ import com.example.ideapad510.sherkatquestionear.Result.ResultController;
 
 import java.util.ArrayList;
 
-public class Question extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity {
     private ArrayList<QuestionObject> questionObjectArray = new ArrayList<>();
     private int pageNumber = 0;
     private static final String TAG = "question";
@@ -47,7 +47,7 @@ public class Question extends AppCompatActivity {
         QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
         String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
 
-        buttons = new RadioButtons(Question.this, this, username,
+        buttons = new RadioButtons(QuestionActivity.this, this, username,
                 porseshnameId, pageNumber);
         buttons.checkedListener();
         checkList = new CheckList(this, this, username, porseshnameId, pageNumber);
@@ -148,7 +148,7 @@ public class Question extends AppCompatActivity {
     }
 
     public  void onDoneClicked(View view){
-        Intent intent = new Intent(Question.this, ResultActivity.class);
+        Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
         intent.putExtra("user",username);
         startActivity(intent);
     }

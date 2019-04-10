@@ -2,11 +2,8 @@ package com.example.ideapad510.sherkatquestionear.Login;
 
 
 import android.content.Context;
-import android.util.Log;
 
-import com.example.ideapad510.sherkatquestionear.ParentClass.Controller;
-
-import static android.content.ContentValues.TAG;
+import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 public class LoginController extends Controller{
     String TAG = "logincontroller";

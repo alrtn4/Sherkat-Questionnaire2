@@ -1,7 +1,7 @@
 <resources>
 
     <!--
-    <string name="app_name">Sherkat Questionear</string>
+    <string name="app_name">Sherkat Questionnaire</string>
     <string name="username">USERNAME</string>
     <string name="password">PASSWORD</string>
     <string name="login">LOGIN</string>
@@ -54,7 +54,7 @@
 -->
 
 
-    <string name="app_name">Sherkat Questionear</string>
+    <string name="app_name">پرسشنامه شرکت</string>
     <string name="username">نام کاربری</string>
     <string name="password">گذرواژه</string>
     <string name="login">ورود</string>

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import static android.media.CamcorderProfile.get;
 
-public class Questionnaire extends AppCompatActivity {
+public class QuestionnaireActivity extends AppCompatActivity {
 
     private ListView listView;
     private static ArrayList<String> questionnaires  = new ArrayList<>();
@@ -56,7 +56,7 @@ public class Questionnaire extends AppCompatActivity {
                 //because start of database and list are different
                 position++;
 
-                Intent intent = new Intent(Questionnaire.this, NewActivity.class);
+                Intent intent = new Intent(QuestionnaireActivity.this, NewActivity.class);
 
                 //get username from last activity (login) and set it to next activity
 //                String username = getIntent().getStringExtra("user");

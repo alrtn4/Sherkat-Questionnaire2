@@ -1,4 +1,4 @@
-package com.example.ideapad510.sherkatquestionear.ParentClass;
+package com.example.ideapad510.sherkatquestionear.Controller;
 
 
 import android.content.Context;

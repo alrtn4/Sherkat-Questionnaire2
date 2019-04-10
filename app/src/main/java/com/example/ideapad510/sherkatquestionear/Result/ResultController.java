@@ -5,7 +5,7 @@ package com.example.ideapad510.sherkatquestionear.Result;
 import android.content.Context;
 
 import com.example.ideapad510.sherkatquestionear.Database.Tables.ResultTable;
-import com.example.ideapad510.sherkatquestionear.ParentClass.Controller;
+import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 import java.util.ArrayList;
 
@@ -47,4 +47,5 @@ public class ResultController extends Controller{
         databaseOtherMethods.deletSavedResultWithoutAnswer(porseshnameId, username, questionId, pasokhgoo);
     }
 
+    public void deletSavedResult(int position){ databaseOtherMethods.deletSavedResult(position); }
 }

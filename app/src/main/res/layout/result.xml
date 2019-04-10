@@ -93,10 +93,14 @@
 
     </LinearLayout>
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical"
+        android:layout_below="@id/columns"
+        android:layout_above="@id/lineAndButton"
+        android:layout_marginBottom="20dp">
 
         <ListView
             android:id="@+id/resultList"
@@ -107,20 +111,44 @@
             android:layout_marginTop="20dp"
             />
 
-    </ScrollView>
+    </LinearLayout>
 
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:color="@color/white_greyish"/>
 
-    <Button
+    <LinearLayout
+        android:id="@+id/lineAndButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+
+            android:background="@color/white_greyish"
+            />
+
+        <Button
+            android:id="@+id/eliminate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/line"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/loginbutton_selector"
+            android:text="حذف"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:padding="3dp"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

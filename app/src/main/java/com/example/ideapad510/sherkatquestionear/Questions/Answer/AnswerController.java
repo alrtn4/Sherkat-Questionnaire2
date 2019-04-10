@@ -4,7 +4,7 @@ package com.example.ideapad510.sherkatquestionear.Questions.Answer;
 import android.content.Context;
 
 import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable1;
-import com.example.ideapad510.sherkatquestionear.ParentClass.Controller;
+import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 import java.util.ArrayList;
 

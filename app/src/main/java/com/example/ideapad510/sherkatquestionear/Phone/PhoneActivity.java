@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Questions.Question;
+import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity;
 import com.example.ideapad510.sherkatquestionear.R;
 
 import java.util.regex.Pattern;
@@ -71,7 +71,7 @@ public class PhoneActivity extends AppCompatActivity {
             phoneController.insertPhoneNumber(number);
         params.setPasokhgoo(number);
 
-        Intent intent = new Intent(PhoneActivity.this, Question.class);
+        Intent intent = new Intent(PhoneActivity.this, QuestionActivity.class);
         startActivity(intent);
     }
 

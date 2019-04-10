@@ -26,6 +26,7 @@ public class DatabaseOtherMethods {
     Database database;
     DatabaseGetMethods databaseGetMethods;
     String TAG = "databaseother";
+    int deleted = 0;
 
 
 
@@ -163,6 +164,32 @@ public class DatabaseOtherMethods {
                                  String answerId, String pasokhgoo){
         int id = (int) getIdOfSelectedAnswer(porseshnameId ,username, questionId, answerId, pasokhgoo);
         deleteSingleRowResultTable(id);
+    }
+
+    public void deletSavedResult(int position){
+        String searchQuery = " SELECT * FROM " + ResultTable.TABLE_NAME + " ; ";
+
+        SQLiteDatabase db = database.getWritableDatabase();
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        int i = 0;
+        i += deleted;
+
+        if(cursor.moveToFirst())
+            do{
+                int id = cursor.getInt(cursor.getColumnIndex(ResultTable.COLUMN_ID));
+
+
+                if( i == position) {
+                    deleteSingleRowResultTable(id);
+                    deleted++;
+                }
+
+                i++;
+
+            }while(cursor.moveToNext());
+
+        cursor.close();
     }
 
     public void deletSavedResultWithoutAnswer(String porseshnameId, String username, String questionId,
