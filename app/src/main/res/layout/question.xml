@@ -45,14 +45,44 @@
         android:layout_marginRight="20dp"
         android:background="@color/white_greyish" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        android:minLines="7"
+        android:background="@drawable/rectangle7"
+        android:padding="5dp"
+        />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@id/editText"
+        android:background="@drawable/loginbutton_selector"
+        android:padding="3dp"
+        android:text="@string/register"
+        android:textColor="@color/background_color"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:onClick="onRegisterClick"
+        android:visibility="gone"/>
+
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/line2"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/line"
+        android:layout_below="@id/registerBtn"
         android:layout_marginTop="10dp">
 
         <RadioGroup
@@ -62,11 +92,33 @@
             android:orientation="vertical"
             android:gravity="end"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-
-            >
+            android:layout_marginEnd="20dp">
 
         </RadioGroup>
+
+
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line2"
+        android:layout_below="@+id/scrollView">
+
+
+        <LinearLayout
+            android:id="@+id/checkboxContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+
+        </LinearLayout>
+
 
     </ScrollView>
 
@@ -80,47 +132,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/white_greyish" />
-<!--
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        android:textSize="15sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_background"
-        android:onClick="onBackClicked"/>
-
-    <Button
-        android:id="@+id/buttonForward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forward"
-        android:textSize="15sp"
-        android:padding="3dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_background"
-        android:onClick="onForwardClicked"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/buttonBack"
-        android:layout_marginBottom="10dp"
-        android:text="DONE"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="1200dp"
-        android:layout_marginStart="120dp"
-        android:background="@drawable/button_background"
-        android:onClick="onDoneClicked"
-        />
--->
 
     <LinearLayout
         android:id="@+id/login_layout"

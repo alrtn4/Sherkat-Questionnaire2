@@ -141,8 +141,33 @@ public class DatabaseOtherMethods {
 
     }
 
-    public void deletSavedResult(String porseshnameId, String username, String questionId, String answerId, String pasokhgoo){
+    public long getIdOfSelectedAnswerWithoutAnswer(String porseshnameId, String username, String questionId, String pasokhgoo){
+        String searchQuery = " SELECT * FROM " + ResultTable.TABLE_NAME + " WHERE " +
+                ResultTable.COLUMN_PORSESHNAME_ID +" = '"+ porseshnameId +"' AND " + ResultTable.COLUMN_USER + " = '"+ username
+                +"' AND "+ ResultTable.COLUMN_QUESTION_ID+ " = '"+ questionId+ "' AND "
+                + ResultTable.PASOKHGOO + " = '"+pasokhgoo+"' ;";
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(searchQuery, null);
+        long id = -1;
+        if(cursor != null && cursor.moveToFirst()) {
+            id = cursor.getLong(cursor.getColumnIndex(ResultTable.COLUMN_ID));
+
+            cursor.close();
+        }
+        return id ;
+
+    }
+
+    public void deletSavedResult(String porseshnameId, String username, String questionId,
+                                 String answerId, String pasokhgoo){
         int id = (int) getIdOfSelectedAnswer(porseshnameId ,username, questionId, answerId, pasokhgoo);
+        deleteSingleRowResultTable(id);
+    }
+
+    public void deletSavedResultWithoutAnswer(String porseshnameId, String username, String questionId,
+                                 String pasokhgoo){
+        int id = (int) getIdOfSelectedAnswerWithoutAnswer(porseshnameId ,username, questionId, pasokhgoo);
         deleteSingleRowResultTable(id);
     }
 
@@ -150,6 +175,27 @@ public class DatabaseOtherMethods {
         String searchQuery = " SELECT * FROM " + ResultTable.TABLE_NAME + " WHERE " +
                 ResultTable.COLUMN_PORSESHNAME_ID +" = '"+ porseshnameId +"' AND " + ResultTable.COLUMN_USER + " = '"+ username
                 +"' AND "+ ResultTable.COLUMN_QUESTION_ID+ " = '"+ questionId+ "' AND "+ ResultTable.COLUMN_ANSWER_ID +" = '"+ answerId+"' AND "
+                + ResultTable.PASOKHGOO+" = '"+pasokhgoo+"' ;";
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(searchQuery, null);
+        long cunt = -1;
+        if(cursor != null && cursor.moveToFirst()) {
+            cunt = cursor.getCount();
+
+            cursor.close();
+        }
+
+        if(cunt>=1)
+            return true;
+        return false ;
+
+    }
+
+    public boolean searchInResultWithoutAnswer(String porseshnameId, String username, String questionId, String pasokhgoo){
+        String searchQuery = " SELECT * FROM " + ResultTable.TABLE_NAME + " WHERE " +
+                ResultTable.COLUMN_PORSESHNAME_ID +" = '"+ porseshnameId +"' AND " + ResultTable.COLUMN_USER + " = '"+ username
+                +"' AND "+ ResultTable.COLUMN_QUESTION_ID+ " = '"+ questionId+ "' AND "
                 + ResultTable.PASOKHGOO+" = '"+pasokhgoo+"' ;";
         SQLiteDatabase db = database.getReadableDatabase();
 
@@ -257,6 +303,24 @@ public class DatabaseOtherMethods {
         }
 
          return resultObjectArrayList;
+    }
+
+
+
+    public String getAnswerOfQuestion(String user, String pasokhgoo, String questionId){
+        String searchQuery = " SELECT * FROM "+ResultTable.TABLE_NAME+" WHERE "+ResultTable.COLUMN_USER+" = '"+
+                user+"' AND "+ResultTable.PASOKHGOO+" = '"+pasokhgoo+"' AND "+ResultTable.COLUMN_QUESTION_ID+
+                " = '"+questionId+"' ;";
+        SQLiteDatabase db = database.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        String answer = null;
+
+        if(cursor.moveToFirst())
+            answer = cursor.getString(cursor.getColumnIndex(ResultTable.COLUMN_ANSWER_ID));
+
+        return answer;
     }
 
 }

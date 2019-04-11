@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //		System.out.println("hhhhhhhhhhhh");
 
-		new StartAllTables(this);
+//		new StartAllTables(this);
 
 
 		try {
