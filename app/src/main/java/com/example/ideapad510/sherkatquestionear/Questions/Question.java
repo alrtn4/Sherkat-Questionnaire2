@@ -77,6 +77,7 @@ public class Question extends AppCompatActivity {
         resultController = new ResultController(this);
         editText = findViewById(R.id.editText);
         pasokhgoo = params.getPasokhgoo();
+
     }
 
     @Override
@@ -153,6 +154,7 @@ public class Question extends AppCompatActivity {
     }
 
     public void onRegisterClick(View view){
+        editText = findViewById(R.id.editText);
         String answer = editText.getText().toString();
         Log.d(TAG, "onRegisterClick: "+answer);
 

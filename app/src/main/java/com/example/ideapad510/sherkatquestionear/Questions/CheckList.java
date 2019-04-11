@@ -55,6 +55,8 @@ public class CheckList {
     public void addCheckBoxes(int number, ArrayList<String> answers, int pageNumber) {
         LinearLayout linearLayout = activity.findViewById(R.id.checkboxContainer);
 
+        linearLayout.setVisibility(View.VISIBLE);
+
         //adds checkBoxes equal to the given number
         for (int i = 1; i <= number; i++) {
             final CheckBox checkBox = new CheckBox(context);

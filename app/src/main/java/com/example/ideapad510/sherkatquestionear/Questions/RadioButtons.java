@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ideapad510.sherkatquestionear.Database.Database;
@@ -55,6 +56,8 @@ public class RadioButtons {
 
     public void addRadioButtons(int number, ArrayList<String> answers, int pageNumber) {
         RadioGroup radioGroup = activity.findViewById(R.id.radioGroup);
+
+        radioGroup.setVisibility(View.VISIBLE);
 
         radioButtonsNumber = number;
 

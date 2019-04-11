@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity {
 							Utils.Login_Fragment).commit();
 		}
 
-//		System.out.println("hhhhhhhhhhhh");
-
 //		new StartAllTables(this);
 
 

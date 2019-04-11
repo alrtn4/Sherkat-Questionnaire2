@@ -39,6 +39,7 @@ public class PhoneActivity extends AppCompatActivity {
     public void onRegisterClick(View view){
         EditText mobileNumber = findViewById(R.id.mobileNumber);
         String number = mobileNumber.getText().toString();
+        System.out.println(number);
         if(!phoneController.searchInPhone(number))
             phoneController.insertPhoneNumber(number);
         params.setPasokhgoo(number);
