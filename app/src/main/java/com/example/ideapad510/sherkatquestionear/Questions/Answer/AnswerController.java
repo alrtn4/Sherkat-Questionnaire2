@@ -3,7 +3,7 @@ package com.example.ideapad510.sherkatquestionear.Questions.Answer;
 
 import android.content.Context;
 
-import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable1;
+import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable;
 import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ public class AnswerController extends Controller{
     }
 
     public int getRowCount(){
-        return db.getRowsCount(AnswerTable1.TABLE_NAME);
+        return db.getRowsCount(AnswerTable.TABLE_NAME);
     }
 
-    public AnswerTable1 getRow(int id){
+    public AnswerTable getRow(int id){
         return databaseGetMethods.getRowAnswer(id);
     }
 

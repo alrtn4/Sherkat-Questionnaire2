@@ -71,7 +71,12 @@ public class PhoneActivity extends AppCompatActivity {
             phoneController.insertPhoneNumber(number);
         params.setPasokhgoo(number);
 
+//        params.setAdapterPageNumber(0);
+
         Intent intent = new Intent(PhoneActivity.this, QuestionActivity.class);
+//        intent.putExtra("starterActivity", "phone");
+        params.setStarterActivity("phone");
+        params.setResultStarterActivity("phone");
         startActivity(intent);
     }
 

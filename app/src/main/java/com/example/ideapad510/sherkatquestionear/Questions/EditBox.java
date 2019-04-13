@@ -81,7 +81,12 @@ public class EditBox {
         scrollView2.setVisibility(View.GONE);
 
         //here we use answerId as a String that holds the answer phrase
-        pasokhgoo = params.getPasokhgoo();
+
+        String pasokhgoo;
+        if(params.getStarterActivity().equals("adapter"))
+            pasokhgoo = params.getAdapterPasokhgoo();
+        else pasokhgoo = params.getPasokhgoo();
+
         String answer = resultController.getAnswerOfQuestion(username, pasokhgoo, (pageNumber+1)+"");
 
         editText.setText(answer);

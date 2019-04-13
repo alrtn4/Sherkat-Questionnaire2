@@ -1,7 +1,9 @@
 package com.example.ideapad510.sherkatquestionear.Result;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 //import com.example.ideapad510.sherkatquestionear.Questions.Chosens;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
+import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity;
 import com.example.ideapad510.sherkatquestionear.R;
 
 import java.util.ArrayList;
@@ -91,9 +94,32 @@ public class ResultListAdapter extends ArrayAdapter {
                     faz[position] = !faz[position];
                 }
 
-                return false;
+                return true;
             }
         });
+
+
+
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //-1 because pagenumber starts with 0
+                params.setAdapterPageNumber(Integer.parseInt(questionTextView.getText().toString()) - 1);
+                params.setAdapterPorseshnameId(porseshnameTextView.getText().toString());
+                params.setAdapterPasokhgoo(pasokhgooTextView.getText().toString());
+
+                Log.d(TAG, "onClick: "+params.getAdapterPasokhgoo());
+
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("starterActivity", "adapter");
+                params.setStarterActivity("adapter");
+                context.startActivity(intent);
+                context.finish();
+
+//                params.setAdapterPageNumber(-1);
+            }
+        });
+
 
 
         return rowView;
@@ -137,6 +163,8 @@ public class ResultListAdapter extends ArrayAdapter {
             }
         });
     }
+
+
 
     public interface Refresh {
         void onRefresh();

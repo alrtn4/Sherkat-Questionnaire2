@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable1;
+import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.LoginTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionnaireTable;
@@ -98,28 +98,28 @@ public class DatabaseGetMethods {
     }
 
 
-    public AnswerTable1 getRowAnswer(long id) {
+    public AnswerTable getRowAnswer(long id) {
         SQLiteDatabase db = database.getReadableDatabase();
 
-        Cursor cursor = db.query(AnswerTable1.TABLE_NAME,
-                new String[]{ AnswerTable1.COLUMN_ID, AnswerTable1.COLUMN_QUESTION_ID, AnswerTable1.COLUMN_ANSWER,
-                        AnswerTable1.COLUMN_MODE, AnswerTable1.COLUMN_POSITION,
-                        AnswerTable1.COLUMN_GOTO, AnswerTable1.COLUMN_SCOUR, AnswerTable1.COLUMN_FUNCTION},
-                AnswerTable1.COLUMN_ID + "=?",
+        Cursor cursor = db.query(AnswerTable.TABLE_NAME,
+                new String[]{ AnswerTable.COLUMN_ID, AnswerTable.COLUMN_QUESTION_ID, AnswerTable.COLUMN_ANSWER,
+                        AnswerTable.COLUMN_MODE, AnswerTable.COLUMN_POSITION,
+                        AnswerTable.COLUMN_GOTO, AnswerTable.COLUMN_SCOUR, AnswerTable.COLUMN_FUNCTION},
+                AnswerTable.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        AnswerTable1 tableRow = new AnswerTable1(
-                cursor.getInt(cursor.getColumnIndex(AnswerTable1.COLUMN_ID)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_QUESTION_ID)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_ANSWER)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_MODE)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_POSITION)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_GOTO)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_SCOUR)),
-                cursor.getString(cursor.getColumnIndex(AnswerTable1.COLUMN_FUNCTION)));
+        AnswerTable tableRow = new AnswerTable(
+                cursor.getInt(cursor.getColumnIndex(AnswerTable.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_QUESTION_ID)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_ANSWER)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_MODE)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_POSITION)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_GOTO)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_SCOUR)),
+                cursor.getString(cursor.getColumnIndex(AnswerTable.COLUMN_FUNCTION)));
         cursor.close();
 
         return tableRow;

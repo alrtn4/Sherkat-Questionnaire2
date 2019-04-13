@@ -193,7 +193,7 @@
             android:textColor="@color/background_color"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:onClick="onDoneClicked" />
+            android:onClick="onResultClicked" />
 
 
 

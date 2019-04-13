@@ -32,7 +32,6 @@ public class Lists {
     public ArrayList<QuestionDemand> getListOfQuestionTables(){
         ArrayList<QuestionDemand> questionDemandArray = new ArrayList<>();
 
-//        String demand = activity.getIntent().getStringExtra("QT");
         String demand = params.getQT();
         String[] questionTables = demand.split("-");
         for(String s: questionTables) {

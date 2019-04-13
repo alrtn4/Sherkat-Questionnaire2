@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable1;
+import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.LoginTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionnaireTable;
@@ -75,11 +75,11 @@ public class DatabaseInsertMethods {
 
         ContentValues values = new ContentValues();
 
-        values.put(AnswerTable1.COLUMN_QUESTION_ID, questionID);
-        values.put(AnswerTable1.COLUMN_ANSWER, answer);
-        values.put(AnswerTable1.COLUMN_MODE, mode);
-        values.put(AnswerTable1.COLUMN_POSITION, position);
-        db.insert(AnswerTable1.TABLE_NAME, null, values);
+        values.put(AnswerTable.COLUMN_QUESTION_ID, questionID);
+        values.put(AnswerTable.COLUMN_ANSWER, answer);
+        values.put(AnswerTable.COLUMN_MODE, mode);
+        values.put(AnswerTable.COLUMN_POSITION, position);
+        db.insert(AnswerTable.TABLE_NAME, null, values);
 
         db.close();
     }

@@ -1,6 +1,6 @@
 package com.example.ideapad510.sherkatquestionear.Database.Tables;
 
-public class AnswerTable1 {
+public class AnswerTable {
     public static final String TABLE_NAME = "answer1";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_QUESTION_ID = "questionID";
@@ -33,8 +33,8 @@ public class AnswerTable1 {
                     + ")";
 
 
-    public AnswerTable1(int id, String questionID, String answer, String mode, String position,
-                        String goTo, String scour, String function) {
+    public AnswerTable(int id, String questionID, String answer, String mode, String position,
+                       String goTo, String scour, String function) {
         this.id = id;
         this.questionID = questionID;
         this.answer = answer;
@@ -48,7 +48,7 @@ public class AnswerTable1 {
 
     public int getId() {return id;}
 
-    public void setId(int id) {this.id = id;}
+//    public void setId(int id) {this.id = id;}
 
     public String getQuestionID() {return questionID;}
 

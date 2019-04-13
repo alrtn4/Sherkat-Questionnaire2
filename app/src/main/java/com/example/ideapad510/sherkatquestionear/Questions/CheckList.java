@@ -2,6 +2,7 @@ package com.example.ideapad510.sherkatquestionear.Questions;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,7 +36,7 @@ public class CheckList {
     AnswerController answerController;
     Lists lists;
     Params params = Params.getInstance();
-    String TAG = "RadioButtons";
+    String TAG = "checklist";
 
     public CheckList(Activity activity, Context context, String username, String porseshnameId,
                         int pageNumber ){
@@ -71,12 +72,21 @@ public class CheckList {
 
             String questionId = String.valueOf(pageNumber+1);
             String answerId = String.valueOf(i);
-            String pasokhgoo = params.getPasokhgoo();
+
+            String pasokhgoo;
+            if(params.getStarterActivity().equals("adapter"))
+                pasokhgoo = params.getAdapterPasokhgoo();
+            else pasokhgoo = params.getPasokhgoo();
+
+            Log.d(TAG, "addCheckBoxes: "+porseshnameId+" "+ username+" "+
+                    questionId+" "+ answerId+" "+ pasokhgoo);
 
             //if the answer is registered in results give it a different background color
             if(questionController.searchInResult(porseshnameId, username, questionId, answerId, pasokhgoo)) {
                 checkBox.setChecked(true);
                 checkBox.setBackgroundResource(R.drawable.rectangle2);
+
+
             }
             else {
                 checkBox.setChecked(false);
@@ -92,14 +102,13 @@ public class CheckList {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    String msg = "You have " + (isChecked ? "checked" : "unchecked") + " this Check it Checkbox.";
-//                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-
 
                     //using pagenumber as questionId
                     String questionId = String.valueOf(params.getPageNumber()+1);
                     String answerId = String.valueOf( checkBox.getId());
                     String pasokhgoo = params.getPasokhgoo();
+
+//                    Log.d(TAG, "onCheckedChanged: "+pasokhgoo);
 
 
                     DatabaseOtherMethods databaseOtherMethods = new DatabaseOtherMethods(context);
@@ -107,6 +116,7 @@ public class CheckList {
 
                     //if the answer is not registered gives the radio button a different color and register it
                     if(!questionController.searchInResult(porseshnameId, username, questionId, answerId, pasokhgoo)) {
+
                         resultController.insertToDatabase(questionId, answerId, porseshnameId, username, pasokhgoo);
                         checkBox.setBackgroundResource(R.drawable.rectangle2);
                     }

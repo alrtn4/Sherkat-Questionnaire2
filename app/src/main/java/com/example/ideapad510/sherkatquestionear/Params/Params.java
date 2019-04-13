@@ -20,6 +20,12 @@ public class Params {
     private ArrayList questionnairesIds;
     private int pageNumber;
     private int listPosition;
+    private int adapterPageNumber = -1;
+    private String adapterPorseshnameId;
+    private String adapterPasokhgoo;
+    private String starterActivity;
+    private String resultStarterActivity;
+
 
     private Params(){};
 
@@ -55,6 +61,31 @@ public class Params {
         this.questionnairesIds = questionnairesIds;}
 
     public void setPageNumber(int pageNumber){ this.pageNumber = pageNumber;}
+
+    public void setAdapterPageNumber(int questionPageNumber) {
+        this.adapterPageNumber = questionPageNumber; }
+
+    public void setAdapterPorseshnameId(String adapterPorseshnameId) {
+        this.adapterPorseshnameId = adapterPorseshnameId; }
+
+    public void setAdapterPasokhgoo(String adapterPasokhgoo) {
+        this.adapterPasokhgoo = adapterPasokhgoo; }
+
+    public void setStarterActivity(String starterActivity) { this.starterActivity = starterActivity; }
+
+    public void setResultStarterActivity(String resultStarterActivity) {
+        this.resultStarterActivity = resultStarterActivity;
+    }
+
+    public String getResultStarterActivity() { return resultStarterActivity; }
+
+    public String getAdapterPasokhgoo() { return adapterPasokhgoo; }
+
+    public String getStarterActivity() { return starterActivity; }
+
+    public String getAdapterPorseshnameId() { return adapterPorseshnameId; }
+
+    public int getAdapterPageNumber() { return adapterPageNumber; }
 
     public String getUsername(){
         return username;

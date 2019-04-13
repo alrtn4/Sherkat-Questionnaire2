@@ -13,6 +13,7 @@ import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.R;
+import com.example.ideapad510.sherkatquestionear.Result.AllResultsActivity;
 import com.example.ideapad510.sherkatquestionear.Result.ResultActivity;
 import com.example.ideapad510.sherkatquestionear.Result.ResultController;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class QuestionActivity extends AppCompatActivity {
     private ArrayList<QuestionObject> questionObjectArray = new ArrayList<>();
-    private int pageNumber = 0;
+    private int pageNumber;
     private static final String TAG = "question";
     private String username;
     private String porseshnameId;
@@ -30,7 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
     private CheckList checkList;
     private EditBox editBox;
     private Params params= Params.getInstance();
-    private Lists lists = new Lists(this, pageNumber, this);
+    private Lists lists ;
     private EditText editText;
     private ResultController resultController;
 
@@ -43,6 +44,25 @@ public class QuestionActivity extends AppCompatActivity {
 
         username = params.getUsername();
         porseshnameId = params.getPorseshnameId();
+
+
+        //this condition shows that result activity has started question activity
+        //because if it has started , adapterpagenumber must have a valid value
+//        if(getIntent().getStringExtra("starterActivity").equals("adapter")) {
+        if(params.getStarterActivity().equals("adapter")){
+            pageNumber = params.getAdapterPageNumber();
+            porseshnameId = params.getAdapterPorseshnameId();
+            pasokhgoo = params.getAdapterPasokhgoo();
+
+            if(pasokhgoo == null)
+                pasokhgoo = "";
+        }
+
+        Log.d(TAG, "onCreate: "+params.getAdapterPageNumber()+" "+pageNumber+" "+porseshnameId+" "+pasokhgoo);
+//        Log.d(TAG, "onCreate: "+pasokhgoo.equals(""));
+
+        lists = new Lists(this, pageNumber, this);
+
 
         QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
         String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
@@ -147,9 +167,18 @@ public class QuestionActivity extends AppCompatActivity {
         }
     }
 
-    public  void onDoneClicked(View view){
-        Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
-        intent.putExtra("user",username);
+    public  void onResultClicked(View view){
+//        Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+//        intent.putExtra("user",username);
+        Intent intent;
+        if(params.getResultStarterActivity().equals("new")) {
+            intent = new Intent(QuestionActivity.this, AllResultsActivity.class);
+            finish();
+        }
+        else{
+            intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            finish();
+        }
         startActivity(intent);
     }
 

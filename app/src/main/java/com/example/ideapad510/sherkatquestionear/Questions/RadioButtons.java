@@ -72,9 +72,15 @@ public class RadioButtons {
 
             String questionId = String.valueOf(pageNumber+1);
             String answerId = String.valueOf(i);
-            String pasokhgoo = params.getPasokhgoo();
 
-            //if the answer is registered in results give it a different background color
+
+
+            String pasokhgoo;
+            if(params.getStarterActivity().equals("adapter"))
+                pasokhgoo = params.getAdapterPasokhgoo();
+            else pasokhgoo = params.getPasokhgoo();
+
+            //if the answer is registered in results gives it a different background color
             if(questionController.searchInResult(porseshnameId, username, questionId, answerId, pasokhgoo)) {
                 rdbtn.setBackgroundResource(R.drawable.rectangle2);
             }
@@ -102,7 +108,7 @@ public class RadioButtons {
             String answerId = String.valueOf( checkedId);
             String pasokhgoo = params.getPasokhgoo();
 
-            DatabaseOtherMethods databaseSearchMethods = new DatabaseOtherMethods(context);
+            DatabaseOtherMethods databaseOtherMethods = new DatabaseOtherMethods(context);
             DatabaseInsertMethods databaseInsertMethods = new DatabaseInsertMethods(context);
 
             RadioButton radioButton = activity.findViewById(checkedId);
@@ -113,7 +119,7 @@ public class RadioButtons {
             }
             //if the answer is registered gives the radio button regular color and delete it from registered answers
             else {
-                databaseSearchMethods.deletSavedResult(porseshnameId, username, questionId, answerId, pasokhgoo);
+                databaseOtherMethods.deletSavedResult(porseshnameId, username, questionId, answerId, pasokhgoo);
                 radioButton.setBackgroundResource(R.drawable.rectangle7);
             }
 
