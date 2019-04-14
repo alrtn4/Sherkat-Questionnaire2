@@ -115,19 +115,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 					}
 				});
-/*
-		username.setOnEditorActionListener( new EditText.OnEditorActionListener(){
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event){
-				if(actionId == EditorInfo.IME_ACTION_DONE){
-					onClick(v);
-					return true;
-				}
 
-				return false;
-			}
-		});
-*/
 		password.setOnEditorActionListener( new EditText.OnEditorActionListener(){
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event){
@@ -143,10 +131,11 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Log.d(TAG, "onClick: getactivity "+(((Context) getActivity()) == null));
+//		Log.d(TAG, "onClick: getactivity "+(((Context) getActivity()) == null));
 		checkValidation();
 	}
 
+/*
 	// Check Validation before login
 	private void checkValidation() {
 		// Get email id and password
@@ -162,18 +151,31 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 					"هر دو مورد را وارد کنید!");
 
 		}
-		// Else do login and do your stuff
-//		else
-//			Toast.makeText(getActivity(), "Do Login.", Toast.LENGTH_SHORT)
-//					.show();
+*/
 
+
+	// Check Validation before login
+	private void checkValidation() {
+
+		if (loginController.checkValidation(username, password)) {
+			loginLayout.startAnimation(shakeAnimation);
+			new CustomToast().Show_Toast(getActivity(), view,
+					"هر دو مورد را وارد کنید!");
+
+		}
+
+
+
+/*
         if (loginController.searchInDatabase(getUsername,getPassword)) {
             Intent i = new Intent(getActivity(), QuestionnaireActivity.class);
             params.setUsername(getUsername);
             startActivity(i);
         }
+*/
 
+		loginController.searchAndGo(getUsername, getPassword, params.getContext());
 
-    }
+	}
 
 }

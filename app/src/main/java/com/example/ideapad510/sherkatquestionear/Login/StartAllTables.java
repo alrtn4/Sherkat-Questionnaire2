@@ -45,14 +45,6 @@ public class StartAllTables {
         questionnaireController.insertToDatabase("پرسشنامه 3","درباره سلامت",
                 "1:\"question1\"/1", "answer1");
     }
-/*
-    private void sampleQuestionnaires(){
-        questionnaireController.insertToDatabase("test1","about weather", "1:\"question1\"/1", "answer1");
-        questionnaireController.insertToDatabase("test2","about geography","1:\"question1\"/1", "answer1");
-        questionnaireController.insertToDatabase("test3","about health","1:\"question1\"/1", "answer1");
-    }
-*/
-
 
     private void sampleqltable(){
         databaseInsertMethods.insertqlTable("1-2-3","code1");

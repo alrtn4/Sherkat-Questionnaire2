@@ -36,7 +36,7 @@ public class DatabaseOtherMethods {
         databaseGetMethods = new DatabaseGetMethods(context);
     }
 
-    public boolean searchInDatabaseLogin(String username, String password){
+    public boolean searchLogin(String username, String password){
         database.getWritableDatabase();
 //        Log.d(TAG, "searchInDatabaseLogin: "+(database == null));
 

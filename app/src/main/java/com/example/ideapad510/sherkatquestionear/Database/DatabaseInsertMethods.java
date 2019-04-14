@@ -26,7 +26,7 @@ public class DatabaseInsertMethods {
         databaseSearchMethods = new DatabaseOtherMethods(context);
     }
 
-    public void insertRowLogin(String username, String password, String code) {
+    public void insertLogin(String username, String password, String code) {
         SQLiteDatabase db = database.getWritableDatabase();
 
         ContentValues values = new ContentValues();

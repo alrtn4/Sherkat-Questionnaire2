@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.example.ideapad510.sherkatquestionear.Database.Database;
@@ -86,6 +87,8 @@ public class QuestionActivity extends AppCompatActivity {
                 break;
         }
 
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
 
         Database db = Database.getInstance(this);
