@@ -131,7 +131,6 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-//		Log.d(TAG, "onClick: getactivity "+(((Context) getActivity()) == null));
 		checkValidation();
 	}
 
@@ -157,13 +156,20 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	// Check Validation before login
 	private void checkValidation() {
 
-		if (loginController.checkValidation(username, password)) {
+        // Get username and password
+        String getUsername = username.getText().toString();
+        String getPassword = password.getText().toString();
+
+
+
+        if (loginController.checkValidation(getUsername, getPassword)) {
 			loginLayout.startAnimation(shakeAnimation);
 			new CustomToast().Show_Toast(getActivity(), view,
 					"هر دو مورد را وارد کنید!");
 
 		}
 
+        loginController.searchAndGo(getUsername, getPassword, params.getContext());
 
 
 /*
@@ -174,7 +180,6 @@ public class Login_Fragment extends Fragment implements OnClickListener {
         }
 */
 
-		loginController.searchAndGo(getUsername, getPassword, params.getContext());
 
 	}
 

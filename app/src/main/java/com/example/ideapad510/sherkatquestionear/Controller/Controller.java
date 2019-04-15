@@ -13,12 +13,14 @@ public class Controller {
     protected DatabaseGetMethods databaseGetMethods;
     protected DatabaseInsertMethods databaseInsertMethods;
     protected DatabaseOtherMethods databaseOtherMethods;
+    protected Context context;
 
     public Controller(Context context){
         db = Database.getInstance(context);
         databaseGetMethods = new DatabaseGetMethods(context);
         databaseInsertMethods = new DatabaseInsertMethods(context);
         databaseOtherMethods = new DatabaseOtherMethods(context);
+        this.context = context;
     }
 
 

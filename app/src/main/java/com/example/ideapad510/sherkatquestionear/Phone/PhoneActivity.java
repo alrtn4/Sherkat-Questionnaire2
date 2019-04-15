@@ -65,19 +65,25 @@ public class PhoneActivity extends AppCompatActivity {
 
     public void onRegisterClick(View view){
         EditText mobileNumber = findViewById(R.id.mobileNumber);
+
+        params.setMobileNumber(mobileNumber);
+
+        PhoneController phoneController = new PhoneController(this);
+
+        phoneController.registerClick(mobileNumber, this);
+/*
         String number = mobileNumber.getText().toString();
-//        System.out.println(number);
+
         if(!phoneController.searchInPhone(number))
             phoneController.insertPhoneNumber(number);
         params.setPasokhgoo(number);
 
-//        params.setAdapterPageNumber(0);
 
         Intent intent = new Intent(PhoneActivity.this, QuestionActivity.class);
-//        intent.putExtra("starterActivity", "phone");
         params.setStarterActivity("phone");
         params.setResultStarterActivity("phone");
         startActivity(intent);
+*/
     }
 
 

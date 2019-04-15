@@ -12,9 +12,8 @@ import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Database.DatabaseInsertMethods;
 import com.example.ideapad510.sherkatquestionear.Database.DatabaseOtherMethods;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController;
 import com.example.ideapad510.sherkatquestionear.R;
-import com.example.ideapad510.sherkatquestionear.Result.ResultController;
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
 //import com.example.ideapad510.sherkatquestionear.Save.SaveResult;
 
 import java.util.ArrayList;
@@ -24,19 +23,19 @@ import java.util.ArrayList;
  */
 
 public class RadioButtons {
-    Activity activity;
-    Context context;
-    String username;
-    String porseshnameId;
-    int pageNumber;
-    ResultController resultController;
-    Database db;
-    QuestionController questionController;
-    AnswerController answerController;
-    Lists lists;
-    Params params = Params.getInstance();
-    int radioButtonsNumber;
-    String TAG = "RadioButtons";
+    private Activity activity;
+    private Context context;
+    private String username;
+    private String porseshnameId;
+    private int pageNumber;
+    private AnswerController answerController;
+//    Database db;
+    private QuestionController questionController;
+//    com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController aanswerController;
+    private Lists lists;
+    private Params params = Params.getInstance();
+    private int radioButtonsNumber;
+    private String TAG = "RadioButtons";
 
     public RadioButtons(Activity activity, Context context, String username, String porseshnameId,
                         int pageNumber ){
@@ -45,20 +44,21 @@ public class RadioButtons {
         this.username = username;
         this.porseshnameId = porseshnameId;
         this.pageNumber = pageNumber;
-        resultController = new ResultController(context);
-        db = Database.getInstance(context);
-        questionController = new QuestionController(context);
         answerController = new AnswerController(context);
+//        db = Database.getInstance(context);
+        questionController = new QuestionController(context);
+//        aanswerController = new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController(context);
         lists = new Lists(activity, pageNumber, context);
     }
 
 
 
-    public void addRadioButtons(int number, ArrayList<String> answers, int pageNumber) {
+    private void addRadioButtons(int number, ArrayList<String> answers, int pageNumber) {
         RadioGroup radioGroup = activity.findViewById(R.id.radioGroup);
 
-        radioGroup.setVisibility(View.VISIBLE);
+//        radioGroup.setVisibility(View.VISIBLE);
 
+        //this variable transfers number to another method
         radioButtonsNumber = number;
 
         //adds radioButtons equal to the given number
@@ -67,14 +67,17 @@ public class RadioButtons {
             rdbtn.setId(i);
             rdbtn.setTextSize(15);
 
-            RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+            RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT,
+                    RadioGroup.LayoutParams.WRAP_CONTENT);
             rdbtn.setLayoutParams(lp);
 
             String questionId = String.valueOf(pageNumber+1);
             String answerId = String.valueOf(i);
 
 
-
+            //if resultlistadapter(originally resultactivity) is the starter of questionactivity
+            // then we must get pasokhgoo from it not
+            //from the regular way
             String pasokhgoo;
             if(params.getStarterActivity().equals("adapter"))
                 pasokhgoo = params.getAdapterPasokhgoo();
@@ -114,7 +117,7 @@ public class RadioButtons {
             RadioButton radioButton = activity.findViewById(checkedId);
             //if the answer is not registered gives the radio button a different color and register it
             if(!questionController.searchInResult(porseshnameId, username, questionId, answerId, pasokhgoo)) {
-                resultController.insertToDatabase(questionId, answerId, porseshnameId, username, pasokhgoo);
+                answerController.insertToDatabase(questionId, answerId, porseshnameId, username, pasokhgoo);
                 radioButton.setBackgroundResource(R.drawable.rectangle2);
             }
             //if the answer is registered gives the radio button regular color and delete it from registered answers

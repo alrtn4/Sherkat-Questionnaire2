@@ -1,8 +1,13 @@
 package com.example.ideapad510.sherkatquestionear.Params;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Ideapad 510 on 2/12/2019.
@@ -25,6 +30,9 @@ public class Params {
     private String adapterPasokhgoo;
     private String starterActivity;
     private String resultStarterActivity;
+    private EditText mobileNumber;
+    private Bundle bundle;
+    private String TAG = "params";
 
 
     private Params(){};
@@ -75,6 +83,20 @@ public class Params {
 
     public void setResultStarterActivity(String resultStarterActivity) {
         this.resultStarterActivity = resultStarterActivity;
+    }
+
+    public EditText getMobileNumber() { return mobileNumber; }
+
+    public void setMobileNumber(EditText mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public Bundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
     }
 
     public String getResultStarterActivity() { return resultStarterActivity; }

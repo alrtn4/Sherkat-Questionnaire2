@@ -14,16 +14,16 @@ import java.util.ArrayList;
  */
 
 public class Lists {
-    Activity activity;
-    int pageNumber;
-    QuestionController questionController;
-    AnswerController answerController;
+//    private Activity activity;
+//    private int pageNumber;
+    private QuestionController questionController;
+    private AnswerController answerController;
     String TAG = "lists";
-    Params params = Params.getInstance();
+    private Params params = Params.getInstance();
 
     public Lists(Activity activity, int pageNumber, Context context) {
-        this.activity = activity;
-        this.pageNumber = pageNumber;
+//        this.activity = activity;
+//        this.pageNumber = pageNumber;
         questionController = new QuestionController(context);
         answerController = new AnswerController(context);
 

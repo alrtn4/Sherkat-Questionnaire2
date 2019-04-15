@@ -5,18 +5,16 @@ package com.example.ideapad510.sherkatquestionear.Questions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import com.example.ideapad510.sherkatquestionear.Database.Database;
+import com.example.ideapad510.sherkatquestionear.Answers.AllAnswersActivity;
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.R;
-import com.example.ideapad510.sherkatquestionear.Result.AllResultsActivity;
-import com.example.ideapad510.sherkatquestionear.Result.ResultActivity;
-import com.example.ideapad510.sherkatquestionear.Result.ResultController;
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerActivity;
 
 import java.util.ArrayList;
 
@@ -27,14 +25,13 @@ public class QuestionActivity extends AppCompatActivity {
     private String username;
     private String porseshnameId;
     private String pasokhgoo;
-
-    private RadioButtons buttons;
+    private RadioButtons radioButtons;
     private CheckList checkList;
     private EditBox editBox;
     private Params params= Params.getInstance();
     private Lists lists ;
     private EditText editText;
-    private ResultController resultController;
+    private AnswerController answerController;
 
 
     @Override
@@ -42,64 +39,15 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
 
-
-        username = params.getUsername();
-        porseshnameId = params.getPorseshnameId();
-
-
-        //this condition shows that result activity has started question activity
-        //because if it has started , adapterpagenumber must have a valid value
-//        if(getIntent().getStringExtra("starterActivity").equals("adapter")) {
-        if(params.getStarterActivity().equals("adapter")){
-            pageNumber = params.getAdapterPageNumber();
-            porseshnameId = params.getAdapterPorseshnameId();
-            pasokhgoo = params.getAdapterPasokhgoo();
-
-            if(pasokhgoo == null)
-                pasokhgoo = "";
-        }
-
-        Log.d(TAG, "onCreate: "+params.getAdapterPageNumber()+" "+pageNumber+" "+porseshnameId+" "+pasokhgoo);
-//        Log.d(TAG, "onCreate: "+pasokhgoo.equals(""));
-
-        lists = new Lists(this, pageNumber, this);
+        //this is for backbuttonpressed in answeractivity
+        params.setBundle(savedInstanceState);
 
 
-        QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
-        String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
-
-        buttons = new RadioButtons(QuestionActivity.this, this, username,
-                porseshnameId, pageNumber);
-        buttons.checkedListener();
-        checkList = new CheckList(this, this, username, porseshnameId, pageNumber);
-        editBox = new EditBox(this, this, username, porseshnameId, pageNumber);
+        setParams();
 
 
-        switch (answerType){
-            case "RADIO":
-                buttons.refreshPage(pageNumber);
-                break;
-            case "CHECK":
-                checkList.refreshPage(pageNumber);
-                break;
-            case "TEXT":
-                editBox.refreshPage(pageNumber);
-                break;
-        }
+        initializeViews();
 
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-
-        Database db = Database.getInstance(this);
-
-
-        //we need this for size of questions in onforwardclicked method
-        questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
-
-        resultController = new ResultController(this);
-        editText = findViewById(R.id.editText);
-        pasokhgoo = params.getPasokhgoo();
 
     }
 
@@ -112,7 +60,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         switch (answerType){
             case "RADIO":
-                buttons.refreshPage(pageNumber);
+                radioButtons.refreshPage(pageNumber);
                 break;
             case "CHECK":
                 checkList.refreshPage(pageNumber);
@@ -130,12 +78,12 @@ public class QuestionActivity extends AppCompatActivity {
         if(!(pageNumber == 0)) {
             pageNumber--;
 
-            QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
-            String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
+//            QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
+            String answerType = (new QuestionsAnswersArray()).get(pageNumber).getAnswerType();
 
             switch (answerType){
                 case "RADIO":
-                    buttons.refreshPage(pageNumber);
+                    radioButtons.refreshPage(pageNumber);
                     break;
                 case "CHECK":
                     checkList.refreshPage(pageNumber);
@@ -157,7 +105,7 @@ public class QuestionActivity extends AppCompatActivity {
 
             switch (answerType){
                 case "RADIO":
-                    buttons.refreshPage(pageNumber);
+                    radioButtons.refreshPage(pageNumber);
                     break;
                 case "CHECK":
                     checkList.refreshPage(pageNumber);
@@ -171,15 +119,13 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public  void onResultClicked(View view){
-//        Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
-//        intent.putExtra("user",username);
         Intent intent;
         if(params.getResultStarterActivity().equals("new")) {
-            intent = new Intent(QuestionActivity.this, AllResultsActivity.class);
+            intent = new Intent(QuestionActivity.this, AllAnswersActivity.class);
             finish();
         }
         else{
-            intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            intent = new Intent(QuestionActivity.this, AnswerActivity.class);
             finish();
         }
         startActivity(intent);
@@ -188,17 +134,76 @@ public class QuestionActivity extends AppCompatActivity {
     public void onRegisterClick(View view){
         editText = findViewById(R.id.editText);
         String answer = editText.getText().toString();
-        Log.d(TAG, "onRegisterClick: "+answer);
 
-        if(resultController.searchInResultWithoutAnswer(porseshnameId, username,
+        if(answerController.searchInResultWithoutAnswer(porseshnameId, username,
                 (pageNumber+1)+"", pasokhgoo))
-            resultController.deletSavedResultWithoutAnswer(porseshnameId, username,
+            answerController.deletSavedResultWithoutAnswer(porseshnameId, username,
                     (pageNumber+1)+"", pasokhgoo);
 
-        resultController.insertToDatabase((pageNumber+1)+"", answer, porseshnameId,
+        answerController.insertToDatabase((pageNumber+1)+"", answer, porseshnameId,
                 username, pasokhgoo);
     }
 
 
+    private void setParams(){
+        username = params.getUsername();
+        porseshnameId = params.getPorseshnameId();
+
+
+        //this condition shows that result activity has started question activity
+        //because if it has started , adapterpagenumber must have a valid value
+        if(params.getStarterActivity().equals("adapter")){
+            pageNumber = params.getAdapterPageNumber();
+            porseshnameId = params.getAdapterPorseshnameId();
+            pasokhgoo = params.getAdapterPasokhgoo();
+
+            if(pasokhgoo == null)
+                pasokhgoo = "";
+        }
+
+    }
+
+
+
+    private void initializeViews(){
+        lists = new Lists(this, pageNumber, this);
+
+
+        QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
+        String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
+
+        radioButtons = new RadioButtons(QuestionActivity.this, this, username,
+                porseshnameId, pageNumber);
+        radioButtons.checkedListener();
+        checkList = new CheckList(this, this, username, porseshnameId, pageNumber);
+        editBox = new EditBox(this, this, username, porseshnameId, pageNumber);
+
+
+        switch (answerType){
+            case "RADIO":
+                radioButtons.refreshPage(pageNumber);
+                break;
+            case "CHECK":
+                checkList.refreshPage(pageNumber);
+                break;
+            case "TEXT":
+                editBox.refreshPage(pageNumber);
+                break;
+        }
+
+
+        //for not showing onscreen keybord for edittext in start of activity
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+
+        //we need this for size of questions in onforwardclicked method
+        questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
+
+        answerController = new AnswerController(this);
+        editText = findViewById(R.id.editText);
+        pasokhgoo = params.getPasokhgoo();
+
+    }
 
 }

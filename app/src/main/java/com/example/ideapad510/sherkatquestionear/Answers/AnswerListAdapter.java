@@ -1,4 +1,4 @@
-package com.example.ideapad510.sherkatquestionear.Result;
+package com.example.ideapad510.sherkatquestionear.Answers;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,24 +20,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class ResultListAdapter extends ArrayAdapter {
+public class AnswerListAdapter extends ArrayAdapter {
     private final Activity context;
-    private final ArrayList<ResultObject> resultArray;
+    private final ArrayList<AnswerObject> resultArray;
     private boolean[] faz;
-    private ResultController resultController;
+    private AnswerController answerController;
     Params params = Params.getInstance();
-    String TAG = "ResultListAdapter";
+    String TAG = "AnswerListAdapter";
     private Refresh refresh;
 
 
-    public ResultListAdapter(Activity context, ArrayList<ResultObject> resultArray){
+    public AnswerListAdapter(Activity context, ArrayList<AnswerObject> resultArray){
         super(context, R.layout.resultlist_row, resultArray);
 
 
         this.context=context;
         this.resultArray = resultArray;
 
-        resultController = new ResultController(context);
+        answerController = new AnswerController(context);
 
         faz = new boolean[resultArray.size()];
         Arrays.fill(faz, true);
@@ -111,7 +111,7 @@ public class ResultListAdapter extends ArrayAdapter {
                 Log.d(TAG, "onClick: "+params.getAdapterPasokhgoo());
 
                 Intent intent = new Intent(context, QuestionActivity.class);
-                intent.putExtra("starterActivity", "adapter");
+//                intent.putExtra("starterActivity", "adapter");
                 params.setStarterActivity("adapter");
                 context.startActivity(intent);
                 context.finish();
@@ -133,32 +133,32 @@ public class ResultListAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 int position = 0;
-                for(ResultObject r:resultArray) {
+                for(AnswerObject r:resultArray) {
                     if (!faz[position])
-                        resultController.deletSavedResult(position);
+                        answerController.deletSavedResult(position);
 
                     position++;
                 }
 
                 refresh.onRefresh();
 
-//                Intent intent = new Intent(context, ResultActivity.class);
+//                Intent intent = new Intent(context, AnswerActivity.class);
 //                context.startActivity(intent);
 /*                int i = 0;
-                for(ResultObject r:resultArray){
+                for(AnswerObject r:resultArray){
                     getView(i,null,null);
                     i++;
                 }
 */
 //                getView(0,null,null);
 
-//                ((AllResultsActivity)context).super.
+//                ((AllAnswersActivity)context).super.
 //                context.setContentView(R.layout.result);
 //                String user = params.getUsername();
 //                String pasokhgoo = params.getPasokhgoo();
-//              ((AllResultsActivity)context).listView = context.findViewById(R.id.resultList);
-//                ResultListAdapter saveListAdapter = new ResultListAdapter(context, resultController.getAllAllResults(user));
-//                ((AllResultsActivity)context).listView.setAdapter(saveListAdapter);
+//              ((AllAnswersActivity)context).listView = context.findViewById(R.id.resultList);
+//                AnswerListAdapter saveListAdapter = new AnswerListAdapter(context, answerController.getAllAllResults(user));
+//                ((AllAnswersActivity)context).listView.setAdapter(saveListAdapter);
 
             }
         });

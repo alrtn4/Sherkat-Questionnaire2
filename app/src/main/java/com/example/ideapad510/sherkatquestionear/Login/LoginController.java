@@ -40,15 +40,11 @@ public class LoginController extends Controller {
 
 
     // Check Validation before login
-    public boolean checkValidation(EditText username, EditText password) {
-        // Get email id and password
-        String getUsername = username.getText().toString();
-        String getPassword = password.getText().toString();
-
+    public boolean checkValidation(String username, String password) {
 
         // Check for both field is empty or not
-        if (getUsername.equals("") || getUsername.length() == 0
-                || getPassword.equals("") || getPassword.length() == 0) {
+        if (username.equals("") || username.length() == 0
+                || password.equals("") || password.length() == 0) {
 
             return true;
         }

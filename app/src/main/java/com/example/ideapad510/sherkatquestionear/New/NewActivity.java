@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Result.AllResultsActivity;
+import com.example.ideapad510.sherkatquestionear.Answers.AllAnswersActivity;
 import com.example.ideapad510.sherkatquestionear.Phone.PhoneActivity;
 import com.example.ideapad510.sherkatquestionear.R;
 
@@ -27,7 +27,7 @@ public class NewActivity extends AppCompatActivity {
     }
 
     public void onResultClicked(View view){
-        Intent intent = new Intent(NewActivity.this, AllResultsActivity.class);
+        Intent intent = new Intent(NewActivity.this, AllAnswersActivity.class);
         startActivity(intent);
 
         params.setResultStarterActivity("new");

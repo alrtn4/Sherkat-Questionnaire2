@@ -2,24 +2,16 @@ package com.example.ideapad510.sherkatquestionear.Questions;
 
 import android.app.Activity;
 import android.content.Context;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController;
 import com.example.ideapad510.sherkatquestionear.R;
-import com.example.ideapad510.sherkatquestionear.Result.ResultController;
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class EditBox {
 
@@ -28,10 +20,10 @@ public class EditBox {
     private String username;
     private String porseshnameId;
     private int pageNumber;
-    private ResultController resultController;
-    private Database db;
-    private QuestionController questionController;
     private AnswerController answerController;
+//    private Database db;
+//    private QuestionController questionController;
+//    private AnswerController answerController;
     private Lists lists;
     private Params params = Params.getInstance();
     private String pasokhgoo;
@@ -45,10 +37,10 @@ public class EditBox {
         this.username = username;
         this.porseshnameId = porseshnameId;
         this.pageNumber = pageNumber;
-        resultController = new ResultController(context);
-        db = Database.getInstance(context);
-        questionController = new QuestionController(context);
         answerController = new AnswerController(context);
+//        db = Database.getInstance(context);
+//        questionController = new QuestionController(context);
+//        answerController = new AnswerController(context);
         lists = new Lists(activity, pageNumber, context);
     }
 
@@ -68,10 +60,7 @@ public class EditBox {
 
 
 
-        editText = activity.findViewById(R.id.editText);
 
-
-//        Button registerBtn = activity.findViewById(R.id.registerBtn);
 
         ScrollView scrollView = activity.findViewById(R.id.editScroll);
         scrollView.setVisibility(View.VISIBLE);
@@ -87,8 +76,10 @@ public class EditBox {
             pasokhgoo = params.getAdapterPasokhgoo();
         else pasokhgoo = params.getPasokhgoo();
 
-        String answer = resultController.getAnswerOfQuestion(username, pasokhgoo, (pageNumber+1)+"");
+        String answer = answerController.getAnswerOfQuestion(username, pasokhgoo,
+                (pageNumber+1)+"", porseshnameId);
 
+        EditText editText = activity.findViewById(R.id.editText);
         editText.setText(answer);
 
 

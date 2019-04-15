@@ -24,7 +24,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     private qlController qlControllerr = new qlController(this);
     String TAG = "porseshname";
     private Params params = Params.getInstance();
-    ArrayList<String> questionnaireIdd =new ArrayList<>();
+//    ArrayList<String> questionnaireIdd =new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,14 +32,16 @@ public class QuestionnaireActivity extends AppCompatActivity {
         setContentView(R.layout.questionnaire);
 
 
+        questionnaires = questionnaireController.getQuestionnaireList();
+/*
         //get List of porseshnameha
         String username = params.getUsername();
         String jmrCode = qlControllerr.getJmrcode(username);
         String function = qlControllerr.getFunction(jmrCode);
-//        Log.d(TAG, "onCreate: function "+(function == null)+ " "+jmrCode);
-//        Log.d(TAG, "onCreate: count is "+qlControllerr.getCount());
-        questionnaires = functionParse(function);
 
+        questionnaires = questionnaireController.functionParse(function);
+
+*/
         listView = findViewById(R.id.questionnaireListView2);
         QuestionnaireListAdapter adapter = new QuestionnaireListAdapter(this, questionnaires);
         listView.setAdapter(adapter);
@@ -53,23 +55,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                //because start of database and list are different
-                position++;
+                //to send parameters to next activities
+                questionnaireController.paramsSet(position);
 
                 Intent intent = new Intent(QuestionnaireActivity.this, NewActivity.class);
-
-                //get username from last activity (login) and set it to next activity
-//                String username = getIntent().getStringExtra("user");
-                String username = params.getUsername();
-
-                //sending porseshnameId to next activity (question)
-                params.setQT(questionnaireController.getQuestionnaire(position).getQT());
-                params.setAT(questionnaireController.getQuestionnaire(position).getAT());
-//                params.setPorseshnameId(String.valueOf(position));
-                //questionnaireIdd returns the list of questionnaires which
-                // are in function recieved from the code of user
-                params.setPorseshnameId(questionnaireIdd.get(position-1));
-
                 startActivity(intent);
             }
         });
@@ -77,6 +66,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
 
 
+/*
     private ArrayList functionParse(String function){
         String[] questionnaireId = function.split("-");
 
@@ -92,10 +82,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             qtArray.add(questionnaires.get(idd-1));
         }
 
-//        params.setQuestionnairesIds(questionnaireIdd);
-
 
         return qtArray;
     }
+*/
 
 }

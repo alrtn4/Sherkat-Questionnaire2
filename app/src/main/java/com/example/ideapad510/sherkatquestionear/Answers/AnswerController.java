@@ -1,4 +1,4 @@
-package com.example.ideapad510.sherkatquestionear.Result;
+package com.example.ideapad510.sherkatquestionear.Answers;
 
 //this class connects result classes to database
 
@@ -9,9 +9,9 @@ import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 
 import java.util.ArrayList;
 
-public class ResultController extends Controller{
+public class AnswerController extends Controller{
 
-    public ResultController(Context context){
+    public AnswerController(Context context){
         super(context);
     }
 
@@ -24,17 +24,17 @@ public class ResultController extends Controller{
         return databaseGetMethods.getRowSave(id);
     }
 
-    public ArrayList<ResultObject> getAllResults(String user, String pasokhgoo){
+    public ArrayList<AnswerObject> getAllResults(String user, String pasokhgoo){
         return databaseOtherMethods.getAllResults(user, pasokhgoo);
     }
 
-    public ArrayList<ResultObject> getAllAllResults(String user){
+    public ArrayList<AnswerObject> getAllAllResults(String user){
         return databaseOtherMethods.getAllAllResults(user);
     }
 
-    //this method returns the result that belongs to specific question
-    public String getAnswerOfQuestion(String user, String pasokhgoo, String questionId){
-        return databaseOtherMethods.getAnswerOfQuestion(user, pasokhgoo, questionId);
+    //this method returns the result that belongs to a specific question
+    public String getAnswerOfQuestion(String user, String pasokhgoo, String questionId, String poreshnameId){
+        return databaseOtherMethods.getAnswerOfQuestion(user, pasokhgoo, questionId, poreshnameId);
     }
 
     public boolean searchInResultWithoutAnswer(String porseshnameId, String username,
