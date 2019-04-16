@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color">
+
+    <TextView
+        android:id="@+id/part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/questionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/part"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:drawableRight="@drawable/question"
+        android:textSize="17sp"
+        />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/questionTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white_greyish" />
+
+
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_above="@id/line2">
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/login_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white_greyish" />
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_marginBottom="8dp">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="end"
+            android:background="@drawable/loginbutton_selector"
+            android:padding="3dp"
+            android:text="@string/back"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:onClick="onBackClicked" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end"
+            android:background="@drawable/loginbutton_selector"
+            android:padding="3dp"
+            android:text="@string/done"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:onClick="onResultClicked" />
+
+
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="start"
+            android:background="@drawable/loginbutton_selector"
+            android:padding="3dp"
+            android:text="@string/forward"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:onClick="onForwardClicked"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

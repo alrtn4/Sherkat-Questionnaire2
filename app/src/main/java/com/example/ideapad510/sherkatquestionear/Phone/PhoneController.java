@@ -7,6 +7,7 @@ import android.widget.EditText;
 import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity;
+import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity2;
 
 /**
  * Created by Ideapad 510 on 2/12/2019.
@@ -39,7 +40,7 @@ public class PhoneController extends Controller{
         params.setPasokhgoo(number);
 
 
-        Intent intent = new Intent(context, QuestionActivity.class);
+        Intent intent = new Intent(context, QuestionActivity2.class);
         params.setStarterActivity("phone");
         params.setResultStarterActivity("phone");
         context.startActivity(intent);
