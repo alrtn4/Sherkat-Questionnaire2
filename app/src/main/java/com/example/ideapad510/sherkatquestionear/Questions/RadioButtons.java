@@ -31,7 +31,7 @@ public class RadioButtons {
     private AnswerController answerController;
 //    Database db;
     private QuestionController questionController;
-//    com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController aanswerController;
+//    com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController aanswerController;
     private Lists lists;
     private Params params = Params.getInstance();
     private int radioButtonsNumber;
@@ -47,7 +47,7 @@ public class RadioButtons {
         answerController = new AnswerController(context);
 //        db = Database.getInstance(context);
         questionController = new QuestionController(context);
-//        aanswerController = new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController(context);
+//        aanswerController = new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController(context);
         lists = new Lists(activity, pageNumber, context);
     }
 

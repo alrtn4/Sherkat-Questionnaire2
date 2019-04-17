@@ -28,7 +28,7 @@ public class CheckList {
     private AnswerController answerController;
 //    private Database db;
     private QuestionController questionController;
-//    private AnswerController answerController;
+//    private AnswerDatabaseController answerController;
     private Lists lists;
     private Params params = Params.getInstance();
     private String TAG = "checklist";

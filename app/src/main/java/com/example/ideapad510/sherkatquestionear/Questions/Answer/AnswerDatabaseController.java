@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 
 
-public class AnswerController extends Controller{
+public class AnswerDatabaseController extends Controller{
 /*    private Database db;
     private DatabaseInsertMethods databaseInsertMethods;
     private DatabaseGetMethods databaseGetMethods;
     public String TAG = "answercontroller";
 */
 
-    public AnswerController(Context context){
+    public AnswerDatabaseController(Context context){
         super(context);
     }
 

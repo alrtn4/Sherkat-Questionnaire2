@@ -21,7 +21,7 @@ public class StartAllTables {
         sampleUserPass();
         sampleQuestionnaires();
         new QuestionController(context).insertQuestionArray(new QuestionsAnswersArray());
-        new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController(context).insertAnswerArray(new QuestionsAnswersArray());
+        new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController(context).insertAnswerArray(new QuestionsAnswersArray());
         sampleqltable();
     }
 

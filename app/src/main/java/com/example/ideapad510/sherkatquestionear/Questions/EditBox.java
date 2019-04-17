@@ -23,7 +23,7 @@ public class EditBox {
     private AnswerController answerController;
 //    private Database db;
 //    private QuestionController questionController;
-//    private AnswerController answerController;
+//    private AnswerDatabaseController answerController;
     private Lists lists;
     private Params params = Params.getInstance();
     private String pasokhgoo;
@@ -40,7 +40,7 @@ public class EditBox {
         answerController = new AnswerController(context);
 //        db = Database.getInstance(context);
 //        questionController = new QuestionController(context);
-//        answerController = new AnswerController(context);
+//        answerController = new AnswerDatabaseController(context);
         lists = new Lists(activity, pageNumber, context);
     }
 

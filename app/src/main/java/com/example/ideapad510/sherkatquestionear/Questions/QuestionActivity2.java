@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public class QuestionActivity2 extends AppCompatActivity {
     private ArrayList<QuestionObject> questionObjectArray = new ArrayList<>();
     private int pageNumber;
-    private static final String TAG = "question";
+    private static final String TAG = "question2";
     private String username;
     private String porseshnameId;
     private String pasokhgoo;
@@ -48,16 +49,28 @@ public class QuestionActivity2 extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
 
+        Log.d(TAG, "onCreate: ");
+        System.out.println("hiiiiiiiiiiii");
+/*
         if(savedInstanceState == null){
             fragmentManager.beginTransaction().replace(R.id.frameContainer,
                     new EditTextFragment(), "EditTextFragment").commit();
         }
+*/
+
+//        if(savedInstanceState == null){
+/*
+            fragmentManager.beginTransaction().add(R.id.frameContainer,
+                    new EditTextFragment()).commit();
+*/
+//        }
 
         setParams();
 
 
         initializeViews();
 
+//        refreshViews(pageNumber);
 
     }
 
@@ -82,7 +95,7 @@ public class QuestionActivity2 extends AppCompatActivity {
         }
 */
 
-        refreshViews(pageNumber);
+//        refreshViews(pageNumber);
 
     }
 
@@ -250,7 +263,34 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         String answerType = (new QuestionsAnswersArray()).get(pageNumber).getAnswerType();
 
+        Log.d(TAG, "refreshViews: ");
 
+        refreshFragment(answerType, pageNumber);
+
+    }
+
+
+    private void refreshFragment(String answerType, int pageNumber){
+        Log.d(TAG, "refreshFragment: ");
+
+        switch (answerType){
+            case "RADIO":
+//                RadioButtonFragment radioButtonFragment = new RadioButtonFragment();
+                fragmentManager.beginTransaction().add(R.id.frameContainer,
+                        new RadioButtonFragment()).commit();
+
+                break;
+            case "CHECK":
+                fragmentManager.beginTransaction().add(R.id.frameContainer,
+                        new CheckBoxFragment()).commit();
+                break;
+            case "TEXT":
+                EditTextFragment editTextFragment = new EditTextFragment();
+                fragmentManager.beginTransaction().add(R.id.frameContainer,
+                        editTextFragment).commit();
+                editTextFragment.refresh(pageNumber);
+                break;
+        }
 
     }
 
