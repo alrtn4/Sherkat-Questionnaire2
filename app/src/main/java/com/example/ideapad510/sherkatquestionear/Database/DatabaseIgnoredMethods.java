@@ -264,7 +264,7 @@ private int getRowsCountQuestion1() {
 
 
     public int getRowsCountAnswer() {
-        String countQuery = "SELECT  * FROM " + AnswerTable1.TABLE_NAME;
+        String countQuery = "SELECT  * FROM " + AnswerTable.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 

@@ -1,8 +1,13 @@
 package com.example.ideapad510.sherkatquestionear.Params;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Ideapad 510 on 2/12/2019.
@@ -19,6 +24,16 @@ public class Params {
     private Context context;
     private ArrayList questionnairesIds;
     private int pageNumber;
+    private int listPosition;
+    private int adapterPageNumber = -1;
+    private String adapterPorseshnameId;
+    private String adapterPasokhgoo;
+    private String starterActivity;
+    private String resultStarterActivity;
+    private EditText mobileNumber;
+    private Bundle bundle;
+    private String TAG = "params";
+
 
     private Params(){};
 
@@ -55,6 +70,45 @@ public class Params {
 
     public void setPageNumber(int pageNumber){ this.pageNumber = pageNumber;}
 
+    public void setAdapterPageNumber(int questionPageNumber) {
+        this.adapterPageNumber = questionPageNumber; }
+
+    public void setAdapterPorseshnameId(String adapterPorseshnameId) {
+        this.adapterPorseshnameId = adapterPorseshnameId; }
+
+    public void setAdapterPasokhgoo(String adapterPasokhgoo) {
+        this.adapterPasokhgoo = adapterPasokhgoo; }
+
+    public void setStarterActivity(String starterActivity) { this.starterActivity = starterActivity; }
+
+    public void setResultStarterActivity(String resultStarterActivity) {
+        this.resultStarterActivity = resultStarterActivity;
+    }
+
+    public EditText getMobileNumber() { return mobileNumber; }
+
+    public void setMobileNumber(EditText mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public Bundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
+    }
+
+    public String getResultStarterActivity() { return resultStarterActivity; }
+
+    public String getAdapterPasokhgoo() { return adapterPasokhgoo; }
+
+    public String getStarterActivity() { return starterActivity; }
+
+    public String getAdapterPorseshnameId() { return adapterPorseshnameId; }
+
+    public int getAdapterPageNumber() { return adapterPageNumber; }
+
     public String getUsername(){
         return username;
     }
@@ -78,4 +132,9 @@ public class Params {
     public ArrayList<String> getQuestionnairesIds(){ return questionnairesIds;}
 
     public int getPageNumber(){ return pageNumber;}
+
+    public int getListPosition() { return listPosition; }
+
+    public void setListPosition(int listPosition) { this.listPosition = listPosition; }
+
 }

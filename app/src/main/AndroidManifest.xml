@@ -18,12 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Questionnaire.Questionnaire"></activity>
-        <activity android:name=".Result.Result"></activity>
-        <activity android:name=".Questions.Question"></activity>
+        <activity android:name=".Questionnaire.QuestionnaireActivity"></activity>
+        <activity android:name=".Answers.AnswerActivity"></activity>
+        <activity android:name=".Questions.QuestionActivity"></activity>
+        <activity android:name=".Questions.QuestionActivity2"></activity>
         <activity android:name=".New.NewActivity"></activity>
         <activity android:name=".Phone.PhoneActivity"></activity>
-        <activity android:name=".Result.AllResults"></activity>
+        <activity android:name=".Answers.AllAnswersActivity"></activity>
     </application>
 
 </manifest>

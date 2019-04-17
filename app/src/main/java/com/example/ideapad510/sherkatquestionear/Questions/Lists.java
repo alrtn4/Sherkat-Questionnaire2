@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionTable;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
-import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController;
+import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController;
 
 import java.util.ArrayList;
 
@@ -14,25 +14,24 @@ import java.util.ArrayList;
  */
 
 public class Lists {
-    Activity activity;
-    int pageNumber;
-    QuestionController questionController;
-    AnswerController answerController;
+//    private Activity activity;
+//    private int pageNumber;
+    private QuestionController questionController;
+    private AnswerDatabaseController answerController;
     String TAG = "lists";
-    Params params = Params.getInstance();
+    private Params params = Params.getInstance();
 
     public Lists(Activity activity, int pageNumber, Context context) {
-        this.activity = activity;
-        this.pageNumber = pageNumber;
+//        this.activity = activity;
+//        this.pageNumber = pageNumber;
         questionController = new QuestionController(context);
-        answerController = new AnswerController(context);
+        answerController = new AnswerDatabaseController(context);
 
     }
     //get list of question tables saved in the questionnaire
     public ArrayList<QuestionDemand> getListOfQuestionTables(){
         ArrayList<QuestionDemand> questionDemandArray = new ArrayList<>();
 
-//        String demand = activity.getIntent().getStringExtra("QT");
         String demand = params.getQT();
         String[] questionTables = demand.split("-");
         for(String s: questionTables) {

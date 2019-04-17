@@ -93,14 +93,62 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/resultList"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:orientation="vertical"
         android:layout_below="@id/columns"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_above="@id/lineAndButton"
+        android:layout_marginBottom="20dp">
 
+        <ListView
+            android:id="@+id/resultList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/columns"
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lineAndButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+
+            android:background="@color/white_greyish"
+            />
+
+        <Button
+            android:id="@+id/eliminate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/line"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/loginbutton_selector"
+            android:text="حذف"
+            android:textColor="@color/background_color"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:padding="3dp"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

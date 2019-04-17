@@ -5,16 +5,15 @@ import android.content.Context;
 
 import com.example.ideapad510.sherkatquestionear.Database.DatabaseInsertMethods;
 import com.example.ideapad510.sherkatquestionear.Questionnaire.QuestionnaireController;
-import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerController;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionController;
-import com.example.ideapad510.sherkatquestionear.Result.ResultController;
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
 
 public class StartAllTables {
     Context context;
     LoginController loginController = new LoginController(context);
     QuestionnaireController questionnaireController = new QuestionnaireController(context);
-    ResultController resultController = new ResultController(context);
+    AnswerController answerController = new AnswerController(context);
     DatabaseInsertMethods databaseInsertMethods = new DatabaseInsertMethods(context);
 
     StartAllTables(Context context){
@@ -22,7 +21,7 @@ public class StartAllTables {
         sampleUserPass();
         sampleQuestionnaires();
         new QuestionController(context).insertQuestionArray(new QuestionsAnswersArray());
-        new AnswerController(context).insertAnswerArray(new QuestionsAnswersArray());
+        new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController(context).insertAnswerArray(new QuestionsAnswersArray());
         sampleqltable();
     }
 
@@ -45,14 +44,6 @@ public class StartAllTables {
         questionnaireController.insertToDatabase("پرسشنامه 3","درباره سلامت",
                 "1:\"question1\"/1", "answer1");
     }
-/*
-    private void sampleQuestionnaires(){
-        questionnaireController.insertToDatabase("test1","about weather", "1:\"question1\"/1", "answer1");
-        questionnaireController.insertToDatabase("test2","about geography","1:\"question1\"/1", "answer1");
-        questionnaireController.insertToDatabase("test3","about health","1:\"question1\"/1", "answer1");
-    }
-*/
-
 
     private void sampleqltable(){
         databaseInsertMethods.insertqlTable("1-2-3","code1");

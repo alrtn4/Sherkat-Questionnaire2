@@ -3,8 +3,8 @@ package com.example.ideapad510.sherkatquestionear.Database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
+import com.example.ideapad510.sherkatquestionear.Answers.AnswerObject;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.LoginTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.QuestionnaireTable;
@@ -12,11 +12,8 @@ import com.example.ideapad510.sherkatquestionear.Database.Tables.ResultTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.phone;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.qlTable;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionObject;
-import com.example.ideapad510.sherkatquestionear.Result.ResultObject;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Ideapad 510 on 2/7/2019.
@@ -26,6 +23,7 @@ public class DatabaseOtherMethods {
     Database database;
     DatabaseGetMethods databaseGetMethods;
     String TAG = "databaseother";
+    int deleted = 0;
 
 
 
@@ -35,7 +33,7 @@ public class DatabaseOtherMethods {
         databaseGetMethods = new DatabaseGetMethods(context);
     }
 
-    public boolean searchInDatabaseLogin(String username, String password){
+    public boolean searchLogin(String username, String password){
         database.getWritableDatabase();
 //        Log.d(TAG, "searchInDatabaseLogin: "+(database == null));
 
@@ -89,15 +87,15 @@ public class DatabaseOtherMethods {
     }
 
 
-    public ArrayList<ResultObject> getAllResults(String user, String pasokhgoo){
-        ArrayList<ResultObject>  saveObjectArrayList= new ArrayList<>();
+    public ArrayList<AnswerObject> getAllResults(String user, String pasokhgoo){
+        ArrayList<AnswerObject>  saveObjectArrayList= new ArrayList<>();
         String query = " SELECT * FROM " + ResultTable.TABLE_NAME + " WHERE "+ ResultTable.COLUMN_USER +" = '"+user+"' AND "
                 + ResultTable.PASOKHGOO+" = '"+pasokhgoo+"' ;";
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(query , null);
 
         while(cursor.moveToNext()) {
-            ResultObject saveObject = new ResultObject(
+            AnswerObject saveObject = new AnswerObject(
                     cursor.getString(cursor.getColumnIndex(ResultTable.COLUMN_QUESTION_ID)),
                     cursor.getString(cursor.getColumnIndex(ResultTable.COLUMN_ANSWER_ID)),
                     cursor.getString(cursor.getColumnIndex(ResultTable.COLUMN_PORSESHNAME_ID)),
@@ -163,6 +161,32 @@ public class DatabaseOtherMethods {
                                  String answerId, String pasokhgoo){
         int id = (int) getIdOfSelectedAnswer(porseshnameId ,username, questionId, answerId, pasokhgoo);
         deleteSingleRowResultTable(id);
+    }
+
+    public void deletSavedResult(int position){
+        String searchQuery = " SELECT * FROM " + ResultTable.TABLE_NAME + " ; ";
+
+        SQLiteDatabase db = database.getWritableDatabase();
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        int i = 0;
+        i += deleted;
+
+        if(cursor.moveToFirst())
+            do{
+                int id = cursor.getInt(cursor.getColumnIndex(ResultTable.COLUMN_ID));
+
+
+                if( i == position) {
+                    deleteSingleRowResultTable(id);
+                    deleted++;
+                }
+
+                i++;
+
+            }while(cursor.moveToNext());
+
+        cursor.close();
     }
 
     public void deletSavedResultWithoutAnswer(String porseshnameId, String username, String questionId,
@@ -271,13 +295,13 @@ public class DatabaseOtherMethods {
     }
 
 
-    public ArrayList<ResultObject> getAllAllResults(String user){
+    public ArrayList<AnswerObject> getAllAllResults(String user){
         String searchQuery = "SELECT * FROM "+ResultTable.TABLE_NAME+" WHERE "+ResultTable.COLUMN_USER+" = '"+user+"' ;" ;
         SQLiteDatabase db = database.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(searchQuery, null);
 
-        ArrayList<ResultObject> resultObjectArrayList = new ArrayList<>();
+        ArrayList<AnswerObject> answerObjectArrayList = new ArrayList<>();
 
         if(cursor.moveToFirst()) {
 //            while (cursor.moveToNext()) {
@@ -294,23 +318,23 @@ public class DatabaseOtherMethods {
                 username = cursor.getString(cursor.getColumnIndex(ResultTable.COLUMN_USER));
                 pasokhgoo = cursor.getString(cursor.getColumnIndex(ResultTable.PASOKHGOO));
 
-                ResultObject resultObject = new ResultObject(questionId, answerId, porseshnameId, username, pasokhgoo);
-                resultObjectArrayList.add(resultObject);
+                AnswerObject answerObject = new AnswerObject(questionId, answerId, porseshnameId, username, pasokhgoo);
+                answerObjectArrayList.add(answerObject);
 
             }while (cursor.moveToNext());
 
             cursor.close();
         }
 
-         return resultObjectArrayList;
+         return answerObjectArrayList;
     }
 
 
 
-    public String getAnswerOfQuestion(String user, String pasokhgoo, String questionId){
+    public String getAnswerOfQuestion(String user, String pasokhgoo, String questionId, String porseshnameId){
         String searchQuery = " SELECT * FROM "+ResultTable.TABLE_NAME+" WHERE "+ResultTable.COLUMN_USER+" = '"+
                 user+"' AND "+ResultTable.PASOKHGOO+" = '"+pasokhgoo+"' AND "+ResultTable.COLUMN_QUESTION_ID+
-                " = '"+questionId+"' ;";
+                " = '"+questionId+"' AND "+ResultTable.COLUMN_PORSESHNAME_ID+" = '"+porseshnameId+"' ;";
         SQLiteDatabase db = database.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(searchQuery, null);

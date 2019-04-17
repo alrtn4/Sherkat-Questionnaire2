@@ -3,7 +3,7 @@ package com.example.ideapad510.sherkatquestionear.Questions;
 
 import android.content.Context;
 
-import com.example.ideapad510.sherkatquestionear.ParentClass.Controller;
+import com.example.ideapad510.sherkatquestionear.Controller.Controller;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.ShortedAnswer;
 
 import java.util.ArrayList;

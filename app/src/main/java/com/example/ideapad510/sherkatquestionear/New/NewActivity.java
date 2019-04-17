@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.ideapad510.sherkatquestionear.Result.AllResults;
+import com.example.ideapad510.sherkatquestionear.Params.Params;
+import com.example.ideapad510.sherkatquestionear.Answers.AllAnswersActivity;
 import com.example.ideapad510.sherkatquestionear.Phone.PhoneActivity;
 import com.example.ideapad510.sherkatquestionear.R;
 
 public class NewActivity extends AppCompatActivity {
+
+    Params params = Params.getInstance();
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -23,7 +27,9 @@ public class NewActivity extends AppCompatActivity {
     }
 
     public void onResultClicked(View view){
-        Intent intent = new Intent(NewActivity.this, AllResults.class);
+        Intent intent = new Intent(NewActivity.this, AllAnswersActivity.class);
         startActivity(intent);
+
+        params.setResultStarterActivity("new");
     }
 }

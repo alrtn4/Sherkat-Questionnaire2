@@ -42,25 +42,28 @@ public class LoginActivity extends AppCompatActivity {
 
 //		new StartAllTables(this);
 
-
-		try {
-//			System.out.println("hiiiiiiiiiiii");
-//			JSONObject jsonObject = new JSONObject(new JSONText().getText());
-
-//			HttpHandler httpHandler = new HttpHandler();
-			Controller2 controller = new Controller2();
-			controller.start();
-
-//			httpHandler.start("http://jmr.samim.org/JMR-Q/req-app/send-results.php?req=1", jsonObject.toString());
-//			new HttpHandler().start("http://jmr.samim.org/JMR-Q/req-app/send-results.php?req=1", new JSONText2().getText());
-		}
-		catch(Exception e) {
-			Log.d(TAG, "onCreate: hiiiiiiiiiiiiiiiii    "+e);
-		}
+//        jsonExaminer();
 
 	}
 
 
+
+	private void jsonExaminer(){
+        try {
+//			JSONObject jsonObject = new JSONObject(new JSONText().getText());
+
+//			HttpHandler httpHandler = new HttpHandler();
+            Controller2 controller = new Controller2();
+            controller.start();
+
+//			httpHandler.start("http://jmr.samim.org/JMR-Q/req-app/send-results.php?req=1", jsonObject.toString());
+//			new HttpHandler().start("http://jmr.samim.org/JMR-Q/req-app/send-results.php?req=1", new JSONText2().getText());
+        }
+        catch(Exception e) {
+            Log.d(TAG, "onCreate: hiiiiiiiiiiiiiiiii    "+e);
+        }
+
+    }
 
 
 }
