@@ -36,7 +36,7 @@ public class EditTextFragment extends Fragment  {
 
         setParams();
 
-        Log.d(TAG, "onCreateView: ");
+        Log.d(TAG, "onCreateView: "+(view == null));
         
         initViews();
 

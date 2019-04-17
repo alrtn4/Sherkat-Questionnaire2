@@ -70,7 +70,7 @@ public class QuestionActivity2 extends AppCompatActivity {
 
         initializeViews();
 
-//        refreshViews(pageNumber);
+        refreshViews(pageNumber);
 
     }
 
