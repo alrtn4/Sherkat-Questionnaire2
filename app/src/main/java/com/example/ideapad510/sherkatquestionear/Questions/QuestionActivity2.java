@@ -95,7 +95,7 @@ public class QuestionActivity2 extends AppCompatActivity {
         }
 */
 
-//        refreshViews(pageNumber);
+        refreshViews(pageNumber);
 
     }
 
@@ -250,7 +250,7 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private void refreshViews(int pageNumber){
 
-        setContentView(R.layout.question);
+        setContentView(R.layout.question2);
 
         TextView questionText = findViewById(R.id.questionTitle);
         TextView partNumberText = findViewById(R.id.part);
@@ -276,19 +276,25 @@ public class QuestionActivity2 extends AppCompatActivity {
         switch (answerType){
             case "RADIO":
 //                RadioButtonFragment radioButtonFragment = new RadioButtonFragment();
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
+                fragmentManager.beginTransaction().replace(R.id.frameContainer,
                         new RadioButtonFragment()).commit();
 
                 break;
             case "CHECK":
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
-                        new CheckBoxFragment()).commit();
+                Bundle args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+
+
+                fragmentManager.beginTransaction().replace(R.id.frameContainer,
+                        CheckBoxFragment.getInstance()).commit();
                 break;
             case "TEXT":
-                EditTextFragment editTextFragment = new EditTextFragment();
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
-                        editTextFragment).commit();
-                editTextFragment.refresh(pageNumber);
+                Bundle args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+
+
+                fragmentManager.beginTransaction().replace(R.id.frameContainer,
+                        EditTextFragment.getInstance(args)).commit();
                 break;
         }
 

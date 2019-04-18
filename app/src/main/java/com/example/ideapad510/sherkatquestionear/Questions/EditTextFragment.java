@@ -1,6 +1,7 @@
 package com.example.ideapad510.sherkatquestionear.Questions;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import static android.content.ContentValues.TAG;
 
 public class EditTextFragment extends Fragment  {
 
+    public static final String PAGE_NUMBER = "page-number";
+
     private View view;
     private EditText editText;
     private Button button;
@@ -29,6 +32,18 @@ public class EditTextFragment extends Fragment  {
     private String TAG = "edittextfragment";
 
 
+
+    public static EditTextFragment getInstance(Bundle args){
+
+        EditTextFragment f = new EditTextFragment();
+
+        f.setArguments(args);
+
+        return f;
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container,
                              Bundle savedInstanceState){
@@ -37,13 +52,17 @@ public class EditTextFragment extends Fragment  {
         setParams();
 
         Log.d(TAG, "onCreateView: "+(view == null));
-        
-        initViews();
+
+
+
+//        initViews();
 
 
         return view;
 
     }
+
+
 
     private void initViews(){
         editText = view.findViewById(R.id.editText);
@@ -64,9 +83,25 @@ public class EditTextFragment extends Fragment  {
 
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+//        Log.d(TAG, "onActivityCreated: ");
+
+        Bundle args = getArguments();
+        int pageNumber = args.getInt(PAGE_NUMBER);
+        refresh(pageNumber);
+
+    }
+
     public void setParams(){
         username = params.getUsername();
         porseshnameId = params.getPorseshnameId();
+        pasokhgoo = params.getPasokhgoo();
+
+        if(pasokhgoo == null)
+            pasokhgoo = "";
 
 
         //this condition shows that result activity has started question activity
@@ -80,6 +115,7 @@ public class EditTextFragment extends Fragment  {
                 pasokhgoo = "";
         }
 
+        Log.d(TAG, "setParams: "+pasokhgoo);
 
     }
 
@@ -102,6 +138,8 @@ public class EditTextFragment extends Fragment  {
 
         String answer = answerController.getAnswerOfQuestion(username, pasokhgoo,
                 (pageNumber+1)+"", porseshnameId);
+
+        Log.d(TAG, "refresh: "+answer+" "+username+" "+pasokhgoo+" "+(pageNumber+1)+" "+porseshnameId);
 
         EditText editText = view.findViewById(R.id.editText);
         editText.setText(answer);
