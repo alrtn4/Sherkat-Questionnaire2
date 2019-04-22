@@ -146,6 +146,7 @@ public class CheckList {
     }
 
 
+    //checks which checkboxes are checked by looking in database
     private void setChecked(CheckBox checkBox, int pageNumber, int i){
         String questionId = String.valueOf(pageNumber+1);
         String answerId = String.valueOf(i);

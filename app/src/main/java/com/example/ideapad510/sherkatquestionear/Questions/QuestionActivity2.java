@@ -272,29 +272,38 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private void refreshFragment(String answerType, int pageNumber){
         Log.d(TAG, "refreshFragment: ");
+        Bundle args;
 
         switch (answerType){
             case "RADIO":
-//                RadioButtonFragment radioButtonFragment = new RadioButtonFragment();
-                fragmentManager.beginTransaction().replace(R.id.frameContainer,
-                        new RadioButtonFragment()).commit();
+                args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+                args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
+                args.putString(CheckBoxFragment.USERNAME, username);
+
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, RadioButtonFragment.getInstance(args)).commit();
 
                 break;
             case "CHECK":
-                Bundle args = new Bundle();
+                args = new Bundle();
                 args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+                args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
+                args.putString(CheckBoxFragment.USERNAME, username);
 
-
-                fragmentManager.beginTransaction().replace(R.id.frameContainer,
-                        CheckBoxFragment.getInstance()).commit();
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, CheckBoxFragment.getInstance(args)).commit();
                 break;
             case "TEXT":
-                Bundle args = new Bundle();
+                args = new Bundle();
                 args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
 
 
-                fragmentManager.beginTransaction().replace(R.id.frameContainer,
-                        EditTextFragment.getInstance(args)).commit();
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, EditTextFragment.getInstance(args)).commit();
                 break;
         }
 
