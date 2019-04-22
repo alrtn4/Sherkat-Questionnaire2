@@ -95,7 +95,7 @@ public class QuestionActivity2 extends AppCompatActivity {
         }
 */
 
-//        refreshViews(pageNumber);
+        refreshViews(pageNumber);
 
     }
 
@@ -250,7 +250,7 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private void refreshViews(int pageNumber){
 
-        setContentView(R.layout.question);
+        setContentView(R.layout.question2);
 
         TextView questionText = findViewById(R.id.questionTitle);
         TextView partNumberText = findViewById(R.id.part);
@@ -272,23 +272,38 @@ public class QuestionActivity2 extends AppCompatActivity {
 
     private void refreshFragment(String answerType, int pageNumber){
         Log.d(TAG, "refreshFragment: ");
+        Bundle args;
 
         switch (answerType){
             case "RADIO":
-//                RadioButtonFragment radioButtonFragment = new RadioButtonFragment();
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
-                        new RadioButtonFragment()).commit();
+                args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+                args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
+                args.putString(CheckBoxFragment.USERNAME, username);
+
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, RadioButtonFragment.getInstance(args)).commit();
 
                 break;
             case "CHECK":
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
-                        new CheckBoxFragment()).commit();
+                args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+                args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
+                args.putString(CheckBoxFragment.USERNAME, username);
+
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, CheckBoxFragment.getInstance(args)).commit();
                 break;
             case "TEXT":
-                EditTextFragment editTextFragment = new EditTextFragment();
-                fragmentManager.beginTransaction().add(R.id.frameContainer,
-                        editTextFragment).commit();
-                editTextFragment.refresh(pageNumber);
+                args = new Bundle();
+                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+
+
+                fragmentManager.beginTransaction()
+//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .replace(R.id.frameContainer, EditTextFragment.getInstance(args)).commit();
                 break;
         }
 
