@@ -19,7 +19,7 @@
         />
 
     <ListView
-        android:id="@+id/questionnaireListView2"
+        android:id="@+id/questionnaireListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:divider="@color/background_color"

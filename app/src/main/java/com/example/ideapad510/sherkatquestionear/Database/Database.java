@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.ideapad510.sherkatquestionear.Database.Tables.AnswerTable;
 import com.example.ideapad510.sherkatquestionear.Database.Tables.LoginTable;
@@ -33,8 +34,10 @@ public class Database extends SQLiteOpenHelper {
         if (instance == null){
             instance = new Database(context);
         }
+
         return instance;
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {

@@ -50,7 +50,7 @@ public class RadioButtonFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceState){
         view = layoutInflater.inflate(R.layout.radiobuttonfragment, container, false);
-
+//        Log.d(TAG, "onCreateView: ");
         return view;
     }
 
@@ -115,10 +115,11 @@ public class RadioButtonFragment extends Fragment {
 
 
 
+
     public void checkedListener(){
-        final RadioGroup radioGroup = getActivity().findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = getActivity().findViewById(R.id.radioGroup);
         Log.d(TAG, "checkedListener: "+(radioGroup == null)+
-                " "+(getActivity()==null));
+                " "+(getActivity()== null));
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
@@ -157,6 +158,7 @@ public class RadioButtonFragment extends Fragment {
         pageNumber = positionInQuestionList;
 
         getActivity().setContentView(R.layout.question2);
+//        Log.d(TAG, "refreshPage: ");
         checkedListener();
 
         TextView questionText = getActivity().findViewById(R.id.questionTitle);

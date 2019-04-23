@@ -3,6 +3,7 @@ package com.example.ideapad510.sherkatquestionear.Questions;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import com.example.ideapad510.sherkatquestionear.R;
 
 import java.util.ArrayList;
 
+import static android.content.ContentValues.TAG;
+
 public class CheckBoxFragment extends Fragment {
 
     public static final String PAGE_NUMBER = "page-number";
@@ -33,6 +36,7 @@ public class CheckBoxFragment extends Fragment {
     private String username;
     private int pageNumber;
     private Lists lists;
+    private String TAG = "CheckBoxFragment";
 
     public static CheckBoxFragment getInstance(Bundle args){
         CheckBoxFragment checkBoxFragment = new CheckBoxFragment();
@@ -99,6 +103,7 @@ public class CheckBoxFragment extends Fragment {
     private void setChecked(CheckBox checkBox, int pageNumber, int i){
         String questionId = String.valueOf(pageNumber+1);
         String answerId = String.valueOf(i);
+//        Log.d(TAG, "onCheckedChanged: "+(checkBox == null));
 
         //if resultlistadapter is the starter of questionactivity then we must get pasokhgoo from it not
         //from the regular way
@@ -127,6 +132,7 @@ public class CheckBoxFragment extends Fragment {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
 
                 //using pagenumber as questionId
                 String questionId = String.valueOf(params.getPageNumber()+1);

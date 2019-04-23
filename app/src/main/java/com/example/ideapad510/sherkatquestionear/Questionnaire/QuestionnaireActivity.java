@@ -19,12 +19,10 @@ import static android.media.CamcorderProfile.get;
 public class QuestionnaireActivity extends AppCompatActivity {
 
     private ListView listView;
-    private static ArrayList<String> questionnaires  = new ArrayList<>();
     private QuestionnaireController questionnaireController = new QuestionnaireController(this);
-    private qlController qlControllerr = new qlController(this);
-    String TAG = "porseshname";
-    private Params params = Params.getInstance();
-//    ArrayList<String> questionnaireIdd =new ArrayList<>();
+//    private qlController qlControllerr = new qlController(this);
+    private String TAG = "porseshname";
+//    private Params params = Params.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,17 +30,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
         setContentView(R.layout.questionnaire);
 
 
-        questionnaires = questionnaireController.getQuestionnaireList();
-/*
-        //get List of porseshnameha
-        String username = params.getUsername();
-        String jmrCode = qlControllerr.getJmrcode(username);
-        String function = qlControllerr.getFunction(jmrCode);
+        ArrayList<String> questionnaires = questionnaireController.getQuestionnaireList();
 
-        questionnaires = questionnaireController.functionParse(function);
 
-*/
-        listView = findViewById(R.id.questionnaireListView2);
+
+        listView = findViewById(R.id.questionnaireListView);
         QuestionnaireListAdapter adapter = new QuestionnaireListAdapter(this, questionnaires);
         listView.setAdapter(adapter);
 
@@ -63,28 +55,5 @@ public class QuestionnaireActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-/*
-    private ArrayList functionParse(String function){
-        String[] questionnaireId = function.split("-");
-
-        ArrayList<String> questionnaires = questionnaireController.getQuestionnaires();
-        //qtArray returns questionnaire list which are in function string
-        ArrayList<String> qtArray = new ArrayList<>();
-
-
-        for(String id : questionnaireId){
-            questionnaireIdd.add(id);
-
-            int idd = Integer.valueOf(id);
-            qtArray.add(questionnaires.get(idd-1));
-        }
-
-
-        return qtArray;
-    }
-*/
 
 }

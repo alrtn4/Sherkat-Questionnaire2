@@ -40,7 +40,7 @@ public class PhoneController extends Controller{
         params.setPasokhgoo(number);
 
 
-        Intent intent = new Intent(context, QuestionActivity2.class);
+        Intent intent = new Intent(context, QuestionActivity.class);
         params.setStarterActivity("phone");
         params.setResultStarterActivity("phone");
         context.startActivity(intent);
