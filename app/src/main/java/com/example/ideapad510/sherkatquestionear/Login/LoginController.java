@@ -16,7 +16,7 @@ public class LoginController extends Controller {
     private Params params = Params.getInstance();
     private Context context;
 
-    LoginController(Context context) {
+    public LoginController(Context context) {
         super(context);
         this.context = context;
     }
@@ -37,8 +37,6 @@ public class LoginController extends Controller {
             params.setUsername(username);
             context.startActivity(i);
 
-        }else{
-            new CustomToast().Show_Toast();
         }
     }
 

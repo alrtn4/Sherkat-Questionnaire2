@@ -56,7 +56,8 @@ public class EditBox {
         ArrayList<QuestionObject> questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         partNumberText.setText("PART : " + questionObjectArray.get(positionInQuestionList).getQuestionPart());
-        questionText.setText((questionObjectArray.get(positionInQuestionList)).getQuestionText());
+        questionText.setText((positionInQuestionList+1)+": "+
+                (questionObjectArray.get(positionInQuestionList)).getQuestionText());
 
 
 

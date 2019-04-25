@@ -12,6 +12,8 @@ import android.widget.EditText;
 
 import com.example.ideapad510.sherkatquestionear.Answers.AllAnswersActivity;
 import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
+import com.example.ideapad510.sherkatquestionear.Error.ErrorFinder;
+import com.example.ideapad510.sherkatquestionear.Login.CustomToast;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.R;
@@ -33,6 +35,7 @@ public class QuestionActivity extends AppCompatActivity {
     private Lists lists ;
     private EditText editText;
     private AnswerController answerController;
+    private boolean lastPageReached = false;
 
 
     @Override
@@ -95,12 +98,34 @@ public class QuestionActivity extends AppCompatActivity {
             }
 
         }
+
+        ErrorFinder ef = new ErrorFinder();
+
+        if(ef.firstQuestion(pageNumber))
+            new CustomToast().Show_Toast(this, findViewById(android.R.id.content), "این اولین سوال است");
+
+
     }
 
     public void onForwardClicked(View view){
+
+
+        //we use lastPageReached variable for ensuring that we are pressing the forward button
+        //when we have reached the last page before and can't go further
+        if(lastPageReached & (pageNumber == questionObjectArray.size() -1))
+            new CustomToast().Show_Toast(this, findViewById(android.R.id.content),
+                    "این آخرین سوال است");
+
+
         if(pageNumber != questionObjectArray.size() - 1) {
 
+            lastPageReached = false;
+
             pageNumber++;
+
+            if(pageNumber == questionObjectArray.size() -1)
+                lastPageReached = true;
+
 
             QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
             String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
