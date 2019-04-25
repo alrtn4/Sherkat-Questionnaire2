@@ -14,6 +14,7 @@ import android.widget.TextView;
 //import com.example.ideapad510.sherkatquestionear.Questions.Chosens;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity;
+import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity2;
 import com.example.ideapad510.sherkatquestionear.R;
 
 import java.util.ArrayList;
@@ -110,7 +111,7 @@ public class AnswerListAdapter extends ArrayAdapter {
 
                 Log.d(TAG, "onClick: "+params.getAdapterPasokhgoo());
 
-                Intent intent = new Intent(context, QuestionActivity.class);
+                Intent intent = new Intent(context, QuestionActivity2.class);
 //                intent.putExtra("starterActivity", "adapter");
                 params.setStarterActivity("adapter");
                 context.startActivity(intent);

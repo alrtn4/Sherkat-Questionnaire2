@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Phone.PhoneController;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity;
+import com.example.ideapad510.sherkatquestionear.Questions.QuestionActivity2;
 import com.example.ideapad510.sherkatquestionear.R;
 
 
@@ -51,7 +52,7 @@ public class AnswerActivity extends AppCompatActivity implements AnswerListAdapt
 
 //        PhoneController phoneController = new PhoneController(this);
 //        phoneController.registerClick( params.getMobileNumber(), this);
-        Intent intent = new Intent(this, QuestionActivity.class);
+        Intent intent = new Intent(this, QuestionActivity2.class);
         intent.putExtra("bundle", params.getBundle());
         startActivity(intent);
     }

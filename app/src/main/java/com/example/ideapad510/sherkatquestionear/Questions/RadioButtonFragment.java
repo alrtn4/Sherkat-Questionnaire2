@@ -72,7 +72,7 @@ public class RadioButtonFragment extends Fragment {
 
 
     private void addRadioButtons(int number, ArrayList<String> answers, int pageNumber) {
-        RadioGroup radioGroup = getActivity().findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
 
 
         //this variable transfers number to another method
@@ -117,7 +117,7 @@ public class RadioButtonFragment extends Fragment {
 
 
     public void checkedListener(){
-        RadioGroup radioGroup = getActivity().findViewById(R.id.radioGroup);
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
         Log.d(TAG, "checkedListener: "+(radioGroup == null)+
                 " "+(getActivity()== null));
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
