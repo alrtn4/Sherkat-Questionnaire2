@@ -174,19 +174,24 @@ public class CheckBoxFragment extends Fragment {
     public void refreshPage(int positionInQuestionList ){
         pageNumber = positionInQuestionList;
 
-        getActivity().setContentView(R.layout.question2);
+//        getActivity().setContentView(R.layout.question2);
 
+
+/*
         TextView questionText = getActivity().findViewById(R.id.questionTitle);
         TextView partNumberText = getActivity().findViewById(R.id.part);
 
         ArrayList<QuestionObject> questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         partNumberText.setText("PART : " + questionObjectArray.get(positionInQuestionList).getQuestionPart());
-        questionText.setText((questionObjectArray.get(positionInQuestionList)).getQuestionText());
+        questionText.setText((positionInQuestionList+1)+": "+
+                (questionObjectArray.get(positionInQuestionList)).getQuestionText());
+*/
 
         ArrayList <String> answers = lists.findingAnswers(positionInQuestionList);
         //refreshes the checkboxes by redrawing them
         addCheckBoxes(answers.size(), answers, positionInQuestionList);
+//        Log.d(TAG, "refreshPage: "+answers.size());
 
 /*
         //sets other two views visibility to gone so that checklist can be seen

@@ -1,7 +1,5 @@
 package com.example.ideapad510.sherkatquestionear.Questions;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
@@ -68,6 +65,30 @@ public class RadioButtonFragment extends Fragment {
         lists = new Lists(getActivity(), pageNumber, getContext());
 
         refreshPage(pageNumber);
+
+
+
+/*
+        RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
+
+
+        //this variable transfers number to another method
+            RadioButton rdbtn = new RadioButton(getContext());
+            rdbtn.setTextSize(15);
+
+            RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT,
+                    RadioGroup.LayoutParams.WRAP_CONTENT);
+            rdbtn.setLayoutParams(lp);
+
+            rdbtn.setText("hi");
+            radioGroup.addView(rdbtn);
+*/
+
+/*
+        ArrayList <String> answers = lists.findingAnswers(3);
+        addRadioButtons(10, answers, 3);
+*/
+
     }
 
 
@@ -116,7 +137,7 @@ public class RadioButtonFragment extends Fragment {
 
 
 
-    public void checkedListener(){
+    public void setCheckedListener(){
         RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
         Log.d(TAG, "checkedListener: "+(radioGroup == null)+
                 " "+(getActivity()== null));
@@ -157,17 +178,20 @@ public class RadioButtonFragment extends Fragment {
     public void refreshPage(int positionInQuestionList ){
         pageNumber = positionInQuestionList;
 
-        getActivity().setContentView(R.layout.question2);
+//        getActivity().setContentView(R.layout.question2);
 //        Log.d(TAG, "refreshPage: ");
-        checkedListener();
+        setCheckedListener();
 
+/*
         TextView questionText = getActivity().findViewById(R.id.questionTitle);
         TextView partNumberText = getActivity().findViewById(R.id.part);
 
         ArrayList<QuestionObject> questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         partNumberText.setText("PART : " + questionObjectArray.get(positionInQuestionList).getQuestionPart());
-        questionText.setText((questionObjectArray.get(positionInQuestionList)).getQuestionText());
+        questionText.setText((positionInQuestionList+1)+": "+
+                (questionObjectArray.get(positionInQuestionList)).getQuestionText());
+*/
 
         ArrayList <String> answers = lists.findingAnswers(positionInQuestionList);
         addRadioButtons(answers.size(), answers, positionInQuestionList);

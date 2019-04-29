@@ -42,7 +42,7 @@ public class LoginController extends Controller {
 
 
     // Check Validation before login
-    public boolean checkValidation(String username, String password) {
+    public boolean checkValidation1(String username, String password) {
 
         // Check for both field is empty or not
         if (username.equals("") || username.length() == 0
@@ -54,6 +54,18 @@ public class LoginController extends Controller {
         return false;
 
 
+    }
+
+
+    public boolean checkValidation2(String username, String password, Context context){
+        LoginController loginController = new LoginController(context);
+
+        if(!loginController.searchInDatabase(username, password) &
+                !checkValidation1(username, password)) {
+            return true;
+        }
+
+        return false;
     }
 
 

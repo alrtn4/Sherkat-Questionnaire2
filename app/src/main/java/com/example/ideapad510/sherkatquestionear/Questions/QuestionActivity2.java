@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.example.ideapad510.sherkatquestionear.Answers.AllAnswersActivity;
 import com.example.ideapad510.sherkatquestionear.Answers.AnswerActivity;
 import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
+import com.example.ideapad510.sherkatquestionear.Error.ErrorFinder;
+import com.example.ideapad510.sherkatquestionear.Login.CustomToast;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.R;
@@ -35,6 +37,8 @@ public class QuestionActivity2 extends AppCompatActivity {
     private EditText editText;
     private AnswerController answerController;
     private FragmentManager fragmentManager;
+    private boolean lastPageReached = false;
+    private boolean firstPageReached = false;
 
 
     @Override
@@ -49,8 +53,8 @@ public class QuestionActivity2 extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
 
-        Log.d(TAG, "onCreate: ");
-        System.out.println("hiiiiiiiiiiii");
+//        Log.d(TAG, "onCreate: ");
+//        System.out.println("hiiiiiiiiiiii");
 /*
         if(savedInstanceState == null){
             fragmentManager.beginTransaction().replace(R.id.frameContainer,
@@ -102,8 +106,27 @@ public class QuestionActivity2 extends AppCompatActivity {
 
 
     public void onBackClicked(View view){
+
+        //we use firstPageReached variable for ensuring that we are pressing the back button
+        //when we have reached the first page before and can't go further
+        if(firstPageReached & (pageNumber == 0))
+            new CustomToast().Show_Toast(this, findViewById(android.R.id.content),
+                    "این اولین سوال است");
+
+
+        Log.d(TAG, "onBackClicked: "+firstPageReached+" "+(pageNumber==0));
+
         if(!(pageNumber == 0)) {
+
+            firstPageReached = false;
+
+
             pageNumber--;
+
+
+            if(pageNumber == 0)
+                firstPageReached = true;
+
 
 //            QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
             String answerType = (new QuestionsAnswersArray()).get(pageNumber).getAnswerType();
@@ -125,12 +148,34 @@ public class QuestionActivity2 extends AppCompatActivity {
         refreshViews(pageNumber);
 
         }
+
+        ErrorFinder ef = new ErrorFinder();
+
+/*
+        if(ef.firstQuestion(pageNumber))
+            new CustomToast().Show_Toast(this, findViewById(android.R.id.content), "این اولین سوال است");
+*/
+
+
     }
 
     public void onForwardClicked(View view){
+
+        //we use lastPageReached variable for ensuring that we are pressing the forward button
+        //when we have reached the last page before and can't go further
+        if(lastPageReached & (pageNumber == questionObjectArray.size() -1))
+            new CustomToast().Show_Toast(this, findViewById(android.R.id.content),
+                    "این آخرین سوال است");
+
+
+
         if(pageNumber != questionObjectArray.size() - 1) {
 
             pageNumber++;
+
+            if(pageNumber == questionObjectArray.size() -1)
+                lastPageReached = true;
+
 
             QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
             String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
@@ -205,13 +250,15 @@ public class QuestionActivity2 extends AppCompatActivity {
         lists = new Lists(this, pageNumber, this);
 
 
-        QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
-        String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
+//        QuestionsAnswersArray questionsAnswersArray = new QuestionsAnswersArray();
+//        String answerType = questionsAnswersArray.get(pageNumber).getAnswerType();
 
+/*
         radioButtons = new RadioButtons(QuestionActivity2.this, this, username,
                 porseshnameId, pageNumber);
+*/
 /*
-        radioButtons.checkedListener();
+        radioButtons.setCheckedListener();
         checkList = new CheckList(this, this, username, porseshnameId, pageNumber);
         editBox = new EditBox(this, this, username, porseshnameId, pageNumber);
 */
@@ -241,7 +288,7 @@ public class QuestionActivity2 extends AppCompatActivity {
         questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         answerController = new AnswerController(this);
-        editText = findViewById(R.id.editText);
+//        editText = findViewById(R.id.editText);
         pasokhgoo = params.getPasokhgoo();
 
     }
@@ -258,12 +305,12 @@ public class QuestionActivity2 extends AppCompatActivity {
         ArrayList<QuestionObject> questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         partNumberText.setText("PART : " + questionObjectArray.get(pageNumber).getQuestionPart());
-        questionText.setText((questionObjectArray.get(pageNumber)).getQuestionText());
+        questionText.setText((pageNumber+1)+": "+(questionObjectArray.get(pageNumber)).getQuestionText());
 
 
         String answerType = (new QuestionsAnswersArray()).get(pageNumber).getAnswerType();
 
-        Log.d(TAG, "refreshViews: ");
+//        Log.d(TAG, "refreshViews: ");
 
         refreshFragment(answerType, pageNumber);
 
@@ -271,7 +318,7 @@ public class QuestionActivity2 extends AppCompatActivity {
 
 
     private void refreshFragment(String answerType, int pageNumber){
-        Log.d(TAG, "refreshFragment: ");
+//        Log.d(TAG, "refreshFragment: ");
         Bundle args;
 
         switch (answerType){
@@ -282,7 +329,7 @@ public class QuestionActivity2 extends AppCompatActivity {
                 args.putString(RadioButtonFragment.USERNAME, username);
 
                 fragmentManager.beginTransaction()
-//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
                         .replace(R.id.frameContainer, RadioButtonFragment.getInstance(args)).commit();
 
                 break;
@@ -293,7 +340,7 @@ public class QuestionActivity2 extends AppCompatActivity {
                 args.putString(CheckBoxFragment.USERNAME, username);
 
                 fragmentManager.beginTransaction()
-//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
                         .replace(R.id.frameContainer, CheckBoxFragment.getInstance(args)).commit();
                 break;
             case "TEXT":
@@ -302,7 +349,7 @@ public class QuestionActivity2 extends AppCompatActivity {
 
 
                 fragmentManager.beginTransaction()
-//                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
                         .replace(R.id.frameContainer, EditTextFragment.getInstance(args)).commit();
                 break;
         }

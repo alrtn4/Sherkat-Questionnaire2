@@ -144,12 +144,20 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 
 
-        if (loginController.checkValidation(getUsername, getPassword)) {
+        if (loginController.checkValidation1(getUsername, getPassword)) {
 			loginLayout.startAnimation(shakeAnimation);
 			new CustomToast().Show_Toast(getActivity(), view,
-					"هر دو مورد را وارد کنید!");
+					"هر دو مورد را وارد کنید");
 
 		}
+
+        if (loginController.checkValidation2(getUsername, getPassword, getContext())) {
+            loginLayout.startAnimation(shakeAnimation);
+            new CustomToast().Show_Toast(getActivity(), view,
+                    "نام کاربری یا گذرواژه اشتباه می باشد");
+
+        }
+
 
         loginController.searchAndGo(getUsername, getPassword, getContext());
 
