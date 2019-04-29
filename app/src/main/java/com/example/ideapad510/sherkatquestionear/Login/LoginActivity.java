@@ -1,31 +1,28 @@
 package com.example.ideapad510.sherkatquestionear.Login;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
-import com.example.ideapad510.sherkatquestionear.JsonHandler.HttpHandler;
-import com.example.ideapad510.sherkatquestionear.JsonHandler.JSONText;
-import com.example.ideapad510.sherkatquestionear.JsonHandler.JSONText2;
-import com.example.ideapad510.sherkatquestionear.JsonHandler.RetroFit.Controller;
 import com.example.ideapad510.sherkatquestionear.JsonHandler.RetroFit.Controller2;
 import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.R;
-import com.google.gson.JsonSerializer;
-
-import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
 	private static FragmentManager fragmentManager;
-	Params params = Params.getInstance();
-	String TAG = "login2";
+	private Params params = Params.getInstance();
+	private String TAG = "login";
+//	private SharedPreferences prefs = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+
 		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 		setContentView(R.layout.login);
 		fragmentManager = getSupportFragmentManager();
@@ -40,11 +37,22 @@ public class LoginActivity extends AppCompatActivity {
 							Utils.Login_Fragment).commit();
 		}
 
-//		new StartAllTables(this);
+
+		//this lines are for making sure startnewtables runs only on first run of program and we don't add
+		//useless data to database
+		SharedPreferences prefs = getSharedPreferences("com.example.ideapad510.sherkatquestionear", MODE_PRIVATE);
+
+		if(prefs.getBoolean("firstRun",true)){
+			new StartAllTables(this);
+
+			prefs.edit().putBoolean("firstRun", false).commit();
+		}
+
 
 //        jsonExaminer();
 
 	}
+
 
 
 

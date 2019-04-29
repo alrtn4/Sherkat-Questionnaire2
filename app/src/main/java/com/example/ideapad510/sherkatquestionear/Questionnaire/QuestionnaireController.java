@@ -14,7 +14,7 @@ public class QuestionnaireController extends Controller{
     //questionnaireIdd returns the list of questionnaires which
     // are in function recieved from the code of user
     private ArrayList<String> questionnaireIdd =new ArrayList<>();
-    Params params = Params.getInstance();
+    private Params params = Params.getInstance();
 
     public QuestionnaireController(Context context){
         super(context);
@@ -24,19 +24,24 @@ public class QuestionnaireController extends Controller{
     public ArrayList<String> getQuestionnaires(){return databaseOtherMethods.getQuestionnaires();
     }
 
+    //inserts a questionnaire with details to database
     public void insertToDatabase(String name, String text, String qt, String at){
         databaseInsertMethods.insertRowQuestionnaire(name, text, qt, at);
     }
 
+    //returns a questionnaire from database depending on database id
     public QuestionnaireTable getQuestionnaire(int id){
         return databaseGetMethods.getRowQuestionnaire(id);
     }
 
 
+    //this parses the function of qltable (which holds a list of questionnaires  that every
+    //user must ask)
     public ArrayList functionParse(String function){
         String[] questionnaireId = function.split("-");
 
         ArrayList<String> questionnaires = getQuestionnaires();
+
         //qtArray returns questionnaire list which are in function string
         ArrayList<String> qtArray = new ArrayList<>();
 
@@ -53,19 +58,12 @@ public class QuestionnaireController extends Controller{
     }
 
 
-/*
-    public ArrayList<String> getQuestionnaireIdd() {
-        return questionnaireIdd;
-    }
-*/
-
 
     public void paramsSet(int position){
-        //because start of database and list are different
+        //because start index of database and list are different
         position++;
 
 
-//                String username = params.getUsername();
 
         //sending porseshnameId to next activity (question)
         params.setQT(getQuestionnaire(position).getQT());

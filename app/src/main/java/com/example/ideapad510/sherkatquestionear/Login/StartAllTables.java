@@ -2,27 +2,36 @@ package com.example.ideapad510.sherkatquestionear.Login;
 
 
 import android.content.Context;
+import android.util.Log;
 
+import com.example.ideapad510.sherkatquestionear.Database.Database;
 import com.example.ideapad510.sherkatquestionear.Database.DatabaseInsertMethods;
 import com.example.ideapad510.sherkatquestionear.Questionnaire.QuestionnaireController;
+import com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController;
 import com.example.ideapad510.sherkatquestionear.Questions.Answer.QuestionsAnswersArray;
 import com.example.ideapad510.sherkatquestionear.Questions.QuestionController;
 import com.example.ideapad510.sherkatquestionear.Answers.AnswerController;
 
+import static android.content.ContentValues.TAG;
+
 public class StartAllTables {
-    Context context;
-    LoginController loginController = new LoginController(context);
-    QuestionnaireController questionnaireController = new QuestionnaireController(context);
-    AnswerController answerController = new AnswerController(context);
-    DatabaseInsertMethods databaseInsertMethods = new DatabaseInsertMethods(context);
+    private Context context;
+    private LoginController loginController = new LoginController(context);
+    private QuestionnaireController questionnaireController = new QuestionnaireController(context);
+    private AnswerController answerController = new AnswerController(context);
+    private DatabaseInsertMethods databaseInsertMethods = new DatabaseInsertMethods(context);
+    private String TAG = "StartAllTables";
 
     StartAllTables(Context context){
         this.context = context;
-        sampleUserPass();
-        sampleQuestionnaires();
-        new QuestionController(context).insertQuestionArray(new QuestionsAnswersArray());
-        new com.example.ideapad510.sherkatquestionear.Questions.Answer.AnswerDatabaseController(context).insertAnswerArray(new QuestionsAnswersArray());
-        sampleqltable();
+
+
+            sampleUserPass();
+            sampleQuestionnaires();
+            new QuestionController(context).insertQuestionArray(new QuestionsAnswersArray());
+            new AnswerDatabaseController(context).insertAnswerArray(new QuestionsAnswersArray());
+            sampleqltable();
+
     }
 
 

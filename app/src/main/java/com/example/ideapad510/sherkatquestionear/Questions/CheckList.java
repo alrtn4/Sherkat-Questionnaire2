@@ -88,7 +88,8 @@ public class CheckList {
         ArrayList<QuestionObject> questionObjectArray = lists.getQuestionArray(lists.getListOfQuestionTables());
 
         partNumberText.setText("PART : " + questionObjectArray.get(positionInQuestionList).getQuestionPart());
-        questionText.setText((questionObjectArray.get(positionInQuestionList)).getQuestionText());
+        questionText.setText((positionInQuestionList+1)+": "+
+                (questionObjectArray.get(positionInQuestionList)).getQuestionText());
 
         ArrayList <String> answers = lists.findingAnswers(positionInQuestionList);
         //refreshes the checkboxes by redrawing them

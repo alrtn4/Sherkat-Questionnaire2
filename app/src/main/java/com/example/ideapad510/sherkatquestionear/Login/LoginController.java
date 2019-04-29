@@ -12,11 +12,13 @@ import com.example.ideapad510.sherkatquestionear.Params.Params;
 import com.example.ideapad510.sherkatquestionear.Questionnaire.QuestionnaireActivity;
 
 public class LoginController extends Controller {
-    String TAG = "logincontroller";
-    Params params = Params.getInstance();
+    private String TAG = "logincontroller";
+    private Params params = Params.getInstance();
+    private Context context;
 
-    LoginController(Context context) {
+    public LoginController(Context context) {
         super(context);
+        this.context = context;
     }
 
     public void insertToDatabase(String username, String password, String code) {
@@ -53,5 +55,6 @@ public class LoginController extends Controller {
 
 
     }
+
 
 }

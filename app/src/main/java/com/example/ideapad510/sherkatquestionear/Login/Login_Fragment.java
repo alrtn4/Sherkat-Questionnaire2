@@ -40,9 +40,9 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	private static FragmentManager fragmentManager;
 
 
-	Params params = Params.getInstance();
+	private Params params = Params.getInstance();
 	private LoginController loginController = new LoginController(params.getContext());
-	String TAG = "login_fragment";
+	private String TAG = "login_fragment";
 
 	public Login_Fragment() {
 
@@ -51,7 +51,6 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//		Log.d(TAG, "onCreateView: getActivity "+(getActivity().getBaseContext() == null));
 		view = inflater.inflate(R.layout.login_fragment, container, false);
 		initViews();
 		setListeners();
@@ -134,23 +133,6 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		checkValidation();
 	}
 
-/*
-	// Check Validation before login
-	private void checkValidation() {
-		// Get email id and password
-		String getUsername = username.getText().toString();
-		String getPassword = password.getText().toString();
-
-
-		// Check for both field is empty or not
-		if (getUsername.equals("") || getUsername.length() == 0
-				|| getPassword.equals("") || getPassword.length() == 0) {
-			loginLayout.startAnimation(shakeAnimation);
-			new CustomToast().Show_Toast(getActivity(), view,
-					"هر دو مورد را وارد کنید!");
-
-		}
-*/
 
 
 	// Check Validation before login
@@ -169,7 +151,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 		}
 
-        loginController.searchAndGo(getUsername, getPassword, params.getContext());
+        loginController.searchAndGo(getUsername, getPassword, getContext());
 
 
 /*

@@ -277,9 +277,9 @@ public class QuestionActivity2 extends AppCompatActivity {
         switch (answerType){
             case "RADIO":
                 args = new Bundle();
-                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
-                args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
-                args.putString(CheckBoxFragment.USERNAME, username);
+                args.putInt(RadioButtonFragment.PAGE_NUMBER, pageNumber);
+                args.putString(RadioButtonFragment.PORSESHNAME_ID, porseshnameId);
+                args.putString(RadioButtonFragment.USERNAME, username);
 
                 fragmentManager.beginTransaction()
 //                        .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
@@ -288,7 +288,7 @@ public class QuestionActivity2 extends AppCompatActivity {
                 break;
             case "CHECK":
                 args = new Bundle();
-                args.putInt(EditTextFragment.PAGE_NUMBER, pageNumber);
+                args.putInt(CheckBoxFragment.PAGE_NUMBER, pageNumber);
                 args.putString(CheckBoxFragment.PORSESHNAME_ID, porseshnameId);
                 args.putString(CheckBoxFragment.USERNAME, username);
 
